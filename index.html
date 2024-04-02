@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL IN ONE TATA PLAY</title>
+    
+
+    <style>
+        /* Add loading screen styles */
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 9999;
+        }
+
+        #loading-msg {
+            margin-bottom: 10px;
+        }
+
+        #loading-bar-container {
+            width: 80%;
+            background-color: #555;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #loading-bar {
+            height: 20px;
+            width: 0;
+            background-color: #3498db;
+            transition: width 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #222;
+            color: #ffffff;
+            padding: 1em 0;
+            box-sizing: border-box;
+            font-size: 2em;
+            border-bottom: 2px solid #444;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+            /* Center-align the text in the navigation */
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #3498db;
+            border-radius: 20px;
+            /* Add border-radius to the dropdown */
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s ease;
+            text-align-last: center;
+            /* Center-align text within the select element */
+        }
+
+        select:hover,
+        select:focus {
+            border-color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .site-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            /* Adjusted grid size */
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .site-card {
+            background-color: #444;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            max-width: 150px;
+            /* Set a maximum width for the site card */
+            margin: auto;
+            /* Center the site card within its container */
+        }
+
+        .site-card:hover {
+            transform: scale(1.05);
+        }
+
+        .site-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        .site-info {
+            padding: 10px;
+            /* Reduce padding for the site info */
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .site-info h2 {
+            font-size: 0.9em;
+            /* Adjust the font size for the channel name (h2) */
+            margin: 0;
+        }
+
+        .site-link {
+            margin-top: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #3498db;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-link:hover {
+            background-color: #2c3e50;
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .github-button:hover {
+            background-color: #45a049;
+        }
+
+        .github-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .telegram-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background-color: #0088cc;
+            /* Use the color you prefer for Telegram */
+            border-radius: 5px;
+            margin-left: 10px;
+            /* Adjust the margin as needed */
+            transition: background-color 0.3s ease;
+        }
+
+        .telegram-button:hover {
+            background-color: #006699;
+            /* Adjust the hover color as needed */
+        }
+
+        .telegram-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        /* Modern Search Bar Styles */
+
+        .search-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            /* Adjusted width for better visibility on small screens */
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            /* Add border-radius for a curved end */
+        }
+
+        #channel-search {
+            padding: 10px;
+            border: none;
+            /* Remove border to create a seamless appearance */
+            border-radius: 20px;
+            /* Match the border-radius of the container */
+            width: 70%;
+            /* Adjusted width for better visibility on small screens */
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #channel-search:focus {
+            outline: none;
+            background-color: #eee;
+            /* Change background color when focused */
+        }
+
+        #search-btn {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            /* Add border-radius to the search button */
+            padding: 10px 20px;
+            /* Add padding to the search button */
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #search-btn:hover {
+            background-color: #2c3e50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #search-icon {
+            font-size: 20px;
+            color: #3498db;
+            transition: color 0.3s ease;
+        }
+
+        /* Media Query for Small Screens */
+
+        @media only screen and (max-width: 600px) {
+            .site-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            #channel-search {
+                width: 60%;
+                /* Adjusted width for small screens */
+            }
+            #search-btn {
+                width: 30%;
+                /* Adjusted width for small screens */
+            }
+            #search-bar {
+                align-items: stretch;
+                /* Align items vertically to stretch the search bar */
+            }
+            #channel-search {
+                width: 60%;
+                /* Make the input full width */
+                margin-bottom: 0;
+                /* Remove margin at the bottom */
+            }
+        }
+    </style>
+  <style type='text/css'>
+  /* Animation */
+  @keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}@keyframes rubberBand{from{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,0.75,1)}40%{transform:scale3d(0.75,1.25,1)}50%{transform:scale3d(1.15,0.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}to{transform:scale3d(1,1,1)}}#arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}.inner h2{color: whitesmoke;text-shadow: black;}
+
+  /* Say Hi to Adblock */
+  #arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}
+  </style>
+
+</head>
+  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+
+  
+
+<body>
+    <!-- Loading screen with progress bar and message -->
+    <div id="loading-screen">
+        <div id="loading-msg">Loading, please wait...</div>
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+    </div>
+    <header>
+        <h1>ALL IN ONE TATA PLAY</h1>
+        <a href="https://t.me/allinonereborn" class="telegram-button" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/KratosRepo/picx-images-hosting@master/20240104/Telegram_logo.svg.4prhaum59ki0.webp" alt="Telegram" class="telegram-icon">
+          Join us on Telegram
+      </a>
+    </header>
+
+    <div class="container">
+
+        
+
+        <!-- add here -->
+        <div class="site-grid" id="lifestyle-channels">
+
+            <a href="ipl_kannada_4k.html" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg"" alt="Tata Play Beauty">
+                    <div class="site-info">
+                        <h2>IPL 2024 KANNADA 4K</h2>
+                    </div>
+                </a>
+
+            <a href="ipl_telugu_4k.html" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg"" alt="Tata Play Cooking">
+                    <div class="site-info">
+                        <h2>IPL 2024 TELUGU 4K</h2>
+                    </div>
+                </a>
+
+            <a href="ipl_tamil_4k.html" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg"" alt="Tata Play Fitness">
+                    <div class="site-info">
+                        <h2>IPL 2024 TAMIL 4K</h2>
+                    </div>
+                </a>
+
+            <a href="ipl_haryianvi.html" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg"" alt="FOX Life HD">
+                    <div class="site-info">
+                        <h2>IPL 2024 HARYIANVI HD</h2>
+                    </div>
+                </a>
+
+            <a href="player.html?channel=TLC%20HD" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg" alt="TLC HD">
+                    <div class="site-info">
+                        <h2>IPL 2024 HINDI 4K</h2>
+                    </div>
+                </a>
+
+            <a href="ipl_english_4k.html" class="site-card">
+                    <img src="https://i.ibb.co/hdtWLk9/LKN-vs-BLR.jpg" alt="TLC">
+                    <div class="site-info">
+                        <h2>IPL 2024 ENGLISH 4K</h2>
+                    </div>
+                </a>
+
+
+
+
+        </div>
+
+
+
+        <!-- add here -->
+
+        <script>
+            // Function to store the selected group in localStorage
+            function saveSelectedGroup(selectedGroup) {
+                localStorage.setItem('selectedGroup', selectedGroup);
+            }
+
+            // Function to retrieve the stored selected group from localStorage
+            function getStoredSelectedGroup() {
+                return localStorage.getItem('selectedGroup');
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                // Show loading screen
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.display = 'flex';
+
+                // Update the progress bar width
+                const loadingBar = document.getElementById('loading-bar');
+                loadingBar.style.width = '100%';
+
+                // Hide loading screen after a delay (adjust as needed)
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 1000); // 1000 milliseconds = 1 second
+
+                // Check if there is a stored selected group
+                const storedSelectedGroup = getStoredSelectedGroup();
+                if (storedSelectedGroup) {
+                    // Set the selected group in the dropdown
+                    const selectElement = document.getElementById('channel-dropdown');
+                    selectElement.value = storedSelectedGroup;
+
+                    // Trigger the changeChannelGroup function with the stored value
+                    changeChannelGroup();
+                } else {
+                    // Trigger the changeChannelGroup function with the default value
+                    changeChannelGroup();
+                }
+            });
+
+            function searchChannels() {
+                const input = document.getElementById('channel-search').value.toLowerCase();
+                const allSiteCards = document.querySelectorAll('.site-card');
+
+                allSiteCards.forEach(card => {
+                    const channelName = card.querySelector('.site-info h2').innerText.toLowerCase();
+                    const displayStyle = channelName.includes(input) ? 'flex' : 'none';
+                    card.style.display = displayStyle;
+                });
+
+                // Show all genre-specific channel grids
+                const genreGrids = document.querySelectorAll('.site-grid');
+                genreGrids.forEach(grid => {
+                    grid.style.display = 'grid';
+                });
+            }
+
+            function changeChannelGroup() {
+                const selectElement = document.getElementById('channel-dropdown');
+                const selectedGroup = selectElement.options[selectElement.selectedIndex].value;
+
+                // Save the selected group to localStorage
+                saveSelectedGroup(selectedGroup);
+
+                // Hide all genre-specific channel grids
+                const genreGrids = document.querySelectorAll('.site-grid');
+                genreGrids.forEach(grid => {
+                    grid.style.display = 'none';
+                });
+
+                // Show the selected genre-specific channel grid
+                const selectedGrid = document.getElementById(`${selectedGroup}-channels`);
+                if (selectedGrid) {
+                    selectedGrid.style.display = 'grid';
+                }
+            }
+        </script>
+
+      <script type='text/javascript'>
+      //<![CDATA[
+      // Say Hi to Adblock
+      function downloadJSAtOnload(){var e=document.createElement("script");e.src="https://cdn.jsdelivr.net/gh/Arlina-Design/quasar@master/arlinablock.js",document.body.appendChild(e)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
+      //]]>
+      </script>
+
+
+</body>
+
+</html>
