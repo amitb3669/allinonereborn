@@ -1,400 +1,458 @@
 
+<!DOCTYPE html>
 <html>
+	
 
 <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0 , user-scalable=no">
+ <meta name="viewport" content="width=device-width" />
+ <meta property="og:image" content="initial-thumbnail-url.jpg">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+   
+  
+  <title>TATA PLAY WEB</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 
+ <style>
+  * {
+   box-sizing: border-box
+  }
 
-<title>PLAYER</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="author" content="MR.NITROX">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script>
-<script type="text/javascript">jwplayer.key = 'Khpp2dHxlBJHC8MCmLnBuV2jK/DwDnJMniwF6EO9HC/riJ712ZmbHg==';</script>
-<link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
-<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
-<script type='text/javascript' src='https://content.jwplatform.com/libraries/IDzF9Zmk.js'></script>
-<script type="text/javascript">jwplayer.key = 'Khpp2dHxlBJHC8MCmLnBuV2jK/DwDnJMniwF6EO9HC/riJ712ZmbHg==';</script>
-<script src="jwplayer.js"></script>
+  html {
+   height: 100%
+  }
+
+  body {
+   min-height: 100%
+  }
+
+  body {
+   background: #fff;
+   padding: 0;
+   margin: 0;
+   border: 15px solid;
+   text-align: left;
+   border-image: url(https://s.cdpn.io/3/border-tv_1.png) 25% repeat;
+   line-height: 1;
+   background: w
+  }
+
+  #jwplayerDiv {
+   padding: 47.50% 0 0 0;
+   position: relative;
+   width: 90%;
+   box-shadow: 9px 9px 8px #8c8c8c, -29px -29px 58px #fff;
+   f;
+   border-radius: 10px;
+   overflow: hidden
+  }
+
+  ;
+
+  html {
+   background: #fff;
+   padding: 0;
+   margin: 0
+  }
+
+  a {
+   color: #000;
+   font-size: 18px;
+   text-decoration: none
+  }
+
+  h4 {
+   color: #000
+  }
+
+  p {
+   color: #000
+  }
+
+  video {
+   width: 100vw
+  }
+
+  button {
+   box-shadow: 1px 1px 1px #b3b3b3, -1px -1px 1px #fff;
+   border-radius: 5px;
+   padding: 2px
+  }
+
+  button:hover {
+   border: 1px solid rgb(255, 60, 140)
+  }
+
+  #video-player {
+   width: auto;
+   height: auto;
+   margin: 10px;
+   display: block;
+   background-color: #e8e8e8;
+   box-shadow: 5px 5px 5px #b3b3b3, -5px -5px 5px #fff;
+   border-radius: 10px;
+   padding: 0;
+   overflow: hidden
+  }
+
+  .program-info {
+   width: auto;
+   height: auto;
+   margin-top: 10px;
+   margin-bottom: 30px;
+   display: block;
+   background-color: #e8e8e8;
+   box-shadow: 5px 5px 5px #b3b3b3, -5px -5px 5px #fff;
+   border-radius: 10px;
+   padding: 10px
+  }
+
+  .logo {
+   display: inline-block;
+   width: 80px;
+   height: 80px;
+   margin-right: 10px;
+   background-color: #fff;
+   border-radius: 50%;
+   box-shadow: 5px 5px 10px #b3b3b3, -5px -5px 10px #fff
+  }
+
+  .channel-name {
+   font-family: 'Fjalla One', sans-serif;
+   font-weight: 700;
+   color: lightmagenta;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+   margin-top: 30px;
+   font-size: 1.5rem;
+   position: absolute
+  }
+
+  .s-n {
+   font-family: 'Gloock', serif;
+   font-weight: 700;
+   color: #333;
+   margin-top: 0;
+   font-size: 1.5rem;
+   position: absolute;
+   color: darkcyan;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, .3)
+  }
+
+  .program-name {
+   margin-top: 10px;
+   font-size: 1.4rem;
+   font-weight: 700;
+   color: #333
+  }
+
+  .program-description {
+   margin-top: 5px;
+   color: #666;
+   font-weight: 300
+  }
+
+  .program-timing {
+   margin-top: 5px;
+   font-style: italic;
+   color: #666
+  }
+
+  #parent-container {
+   position: relative;
+   padding: 0;
+   padding-top: 0;
+   box-shadow: 5px 5px 5px #b3b3b3, -5px -5px 5px #b3b3b3;
+   background-color: #e8e8e8;
+   border-radius: 10px
+  }
+
+  #container {
+   position: relative;
+   display: flex;
+   overflow-x: auto;
+   padding-left: 10px;
+   padding-bottom: 10px;
+   padding-top: 10px;
+   margin-top: 10px;
+   scrollbar-width: none;
+   -ms-overflow-style: none
+  }
+
+  #container::-webkit-scrollbar {
+   width: 0
+  }
+
+  .releted {
+   font-size: 1.4rem;
+   font-weight: 700;
+   color: #333;
+   font-family: 'Fjalla One', sans-serif;
+   color: lightmagenta;
+   text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+   position: inline;
+   padding-top: 5px;
+   padding-left: 5px;
+   padding-bottom: 5px;
+   margin-bottom: -20px
+  }
+
+  .card {
+   width: 120px;
+   height: 150px;
+   flex-shrink: 0;
+   margin-right: 10px;
+   border-radius: 10px;
+   background-color: white;
+   box-shadow: 5px 5px 5px white, -5px -5px 5px whitesmoke;
+
+  }
+
+  .card img {
+   width: 100%;
+   height: 100px;
+   padding: 10px 10px;
+   /*   filter: drop-shadow(0 0 0.75rem dodgerblue); */
+   margin: 10px 10px ⁰px px;
+   object-fit: contain
+  }
+
+  .card h2 {
+   margin: 5px;
+   font-size: 14px;
+   text-align: center;
+   padding: 5px
+  }
+
+  .slider-arrow {
+   position: absolute;
+   top: calc(50% - 20px);
+   width: 40px;
+   height: 40px;
+   background-color: rgba(30, 140, 255, .63);
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%;
+   cursor: pointer;
+   z-index: 1;
+   transition: background-color 0.3s ease;
+   transform: rotate(90deg)
+  }
+
+  .slider-arrow {
+   position: absolute
+  }
+
+  .slider-arrow.left {
+   left: 10px
+  }
+
+  .slider-arrow.right {
+   right: 10px
+  }
+  
+   
+  @import url('https://fonts.googleapis.com/css2?family=Aclonica&family=MuseoModerno:wght@300&family=Playball&display=swap');
+
+  h1 {
+   text-align: left
+  }
+
+  .wrapperxd {
+   display: grid;
+   /* now, the browser knows it has to handle a grid */
+   width: 70%;
+   /* width of the wrapper = 70% */
+   margin: ;
+   /* Divide the remaining 30% between the left and right margins */
+   grid-template-columns: 1fr 1fr 1fr;
+   /* three equal columns spread over the width */
+   grid-gap: 15px;
+   /* 10 px margin between the columns and rows */
+   background-color: #fff;
+   color: #444;
+   font-family: 'Aclonica', sans-serif;
+   width: 95%;
+   height: auto;
+   margin-top: 10px;
+   margin-bottom: 30px;
+   background-color: #beccc3;
+   box-shadow: 5px 5px 5px #b3b3b3, -5px -5px 5px #fff;
+   border-radius: 10px;
+   padding: 10px;
+   padding-bottom: 25px
+   
+  }
+
+  .box {
+   background-color: #444;
+   color: #fff;
+   border-radius: 15px;
+   /* little rounded corners on the box element */
+   padding: 5px;
+   text-align: center;
+   border: 2px solid purple;
+   line-height: 30px;
+   
+  }
+
+  .box.a,
+  .box.b,
+  .box.c,
+  .box.d,
+  .box.e,
+  .box.f,
+  .box.h {
+   box-shadow: 5px 5px;
+   font-size: 22px;
+   transition-duration: 0.3s
+  }
+
+  .g {
+   grid-column: 1/4;
+   font-family: 'Playball', sans-serif;
+   font-size: 27px;
+   
+   color: darkblue;
+   text-align: left;
+   
+   font-weight: 700;
+   color: #333;
+   font-family: 'Fjalla One', sans-serif;
+   color: lightmagenta;
+   text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+   position: inline;
+   padding-top: 5px;
+   padding-left: 5px;
+   padding-bottom: 10px;
+   margin-bottom: -20px
+  }
+
+  .box.a:hover,
+  .box.b:hover,
+  .box.c:hover,
+  .box.d:hover,
+  .box.e:hover,
+  .box.f:hover,
+  .box.h:hover {
+   font-family: 'MuseoModerno', sans-serif;
+   font-size: 22px;
+   transition-duration: 0.3s;
+  }
+
+  .box.a {
+   background-color: yellow;
+   color: #000
+  }
+
+  .box.a:hover {
+   background-color: #000;
+   color: yellow;
+  }
+
+  .box.b {
+   background-color: #e4ef3f;
+   color: #000
+  }
+
+  .box.b:hover {
+   background-color: #000;
+   color: #e4ef3f
+  }
+
+  .box.c {
+   background-color: #b8e75b;
+   color: #000
+  }
+
+  .box.c:hover {
+   background-color: #000;
+   color: #b8e75b
+  }
+
+  .box.d {
+   background-color: #9fd1ec;
+   color: #000
+  }
+
+  .box.d:hover {
+   background-color: #000;
+   color: #9fd1ec
+  }
+
+  .box.e {
+   background-color: #68c1f1;
+   color: #000
+  }
+
+  .box.e:hover {
+   background-color: #000;
+   color: #68c1f1
+  }
+
+  .box.f {
+   background-color: #68c1f1;
+   color: #000
+  }
+
+  .box.f:hover {
+   background-color: #000;
+   color: #68c1f1
+  }
+
+  .box.h {
+   background-color: #37b1f2;
+   color: #000
+  }
+
+  .box.h:hover {
+   background-color: #000;
+   color: #37b1f2
+  }
+  #catchup{
+   display: block;
+  }
+  
+ 
+ </style>
+  </style>
+</head>
+
 <body>
-<style>
-        html {
-            font-family: Poppins;
-            background: #000;
-            margin: 0;
-            padding: 0
-        }
-        
-        #myElement{
-        position:reletive;
-        width:100%!important;
-        height:100%!important
-            
-                
-        }
-        
-    .jw-state-paused .jw-svg-icon-play path {
-        display: none;
-    }
 
-    .jw-state-paused .jw-svg-icon-play {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/play.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-state-paused .jw-icon-playback:hover .jw-svg-icon-play {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/play-hover.svg");
-    }
-
-    .jw-svg-icon-pause path {
-        display: none;
-    }
-
-    .jw-svg-icon-pause {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/pause.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-playback:hover .jw-svg-icon-pause {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/pause-hover.svg");
-    }
-
-    .jw-svg-icon-buffer path {
-        display: none;
-    }
-
-    .jw-svg-icon-buffer {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/buffer.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-svg-icon-replay path {
-        display: none;
-    }
-
-    .jw-svg-icon-replay {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/replay.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-replay:hover .jw-svg-icon-replay {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/replay-hover.svg");
-    }
-
-    .jw-svg-icon-rewind path {
-        display: none;
-    }
-
-    .jw-svg-icon-rewind {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/rewind.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-rewind:hover .jw-svg-icon-rewind {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/rewind-hover.svg");
-    }
-
-    .jw-svg-icon-next path {
-        display: none;
-    }
-
-    .jw-svg-icon-next {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/next.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-next:hover .jw-svg-icon-next {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/next-hover.svg");
-    }
-
-    .jw-svg-icon-volume-100 path {
-        display: none;
-    }
-
-    .jw-svg-icon-volume-100 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/volume-on.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-volume:hover .jw-svg-icon-volume-100 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/volume-on-hover.svg");
-    }
-
-    .jw-svg-icon-volume-0 path {
-        display: none;
-    }
-
-    .jw-svg-icon-volume-0 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/volume-off.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-volume:hover .jw-svg-icon-volume-0 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/volume-off-hover.svg");
-    }
-
-    .jw-svg-icon-cc-off path {
-        display: none;
-    }
-
-    .jw-svg-icon-cc-off {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/captions.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-cc-off:hover .jw-svg-icon-cc-off {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/captions-hover.svg");
-    }
-
-    .jw-svg-icon-playlist path {
-        display: none;
-    }
-
-    .jw-svg-icon-playlist {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/playlist.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-playlist-btn:hover .jw-svg-icon-playlist {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/playlist-hover.svg");
-    }
-
-    .jw-svg-icon-settings path {
-        display: none;
-    }
-
-    .jw-svg-icon-settings {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/settings.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-settings:hover .jw-svg-icon-settings {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/settings-hover.svg");
-    }
-
-    .jw-svg-icon-quality-100 path {
-        display: none;
-    }
-
-    .jw-svg-icon-quality-100 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/quality.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-settings-quality:hover .jw-svg-icon-quality-100 {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/quality-hover.svg");
-    }
-
-    .jw-svg-icon-close path {
-        display: none;
-    }
-
-    .jw-svg-icon-close {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/close.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-settings-close:hover .jw-svg-icon-close {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/close-hover.svg");
-    }
-
-    .jw-svg-icon-fullscreen-on path {
-        display: none;
-    }
-
-    .jw-svg-icon-fullscreen-on {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/fullscreen-on.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-on {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/fullscreen-on-hover.svg");
-    }
-
-    .jw-svg-icon-fullscreen-off path {
-        display: none;
-    }
-
-    .jw-svg-icon-fullscreen-off {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/fullscreen-off.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-off {
-        background-image: url("https://cdn.jsdelivr.net/gh/Hadi0609/JioTvAssets@v1.0/assets/jwp/fullscreen-off-hover.svg");
-    }
-
-    .loading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        z-index: 9999;
-    }
-
-    .loading-text {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        text-align: center;
-        width: 100%;
-        height: 100px;
-        line-height: 100px;
-    }
+  
+  
 
 
-    .loading-text span {
-        display: inline-block;
-        margin: 0 5px;
-        font-size: 50px;
-        font-weight: bold;
-        color: #00b3ff;
-        font-family: 'Quattrocento Sans', sans-serif;
-    }
-
-    .loading-text span:nth-child(1) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(2) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.2s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(3) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.4s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(4) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.6s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(5) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.8s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(6) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(7) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.2s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(8) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.4s infinite linear alternate;
-    }
-
-    @keyframes blur-text {
-        0% {
-            filter: blur(0px);
-        }
-
-        100% {
-            filter: blur(4px);
-        }
-    }
-    #videoContainer {
-        position:absolute;
-        width:100%!important;
-        height:100%!important
-    }
-    
-    .scrollbar-track-y {
-  background: #131720 !important;
-  top: 10px !important;
-  bottom: 10px !important;
-  height: auto !important;
-  width: 4px !important;
-  border-radius: 4px !important;
-  right: 10px !important;
-  overflow: hidden;
-}
-.scrollbar-thumb-y {
-  background: #2f80ed !important;
-  width: 4px !important;
-  border-radius: 4px !important;
-}
-.scrollbar-track-x {
-  background: #131720 !important;
-  left: 10px !important;
-  right: 10px !important;
-  height: 4px !important;
-  width: auto !important;
-  border-radius: 4px !important;
-  bottom: 10px !important;
-  overflow: hidden;
-}
-.scrollbar-thumb-x {
-  background: #2f80ed !important;
-  height: 4px !important;
-  border-radius: 4px !important;
-}
 
 
-</style>
+<script src="https://content.jwplatform.com/libraries/Z79JsmAO.js"></script>
 
+<div id="jwplayerDiv"></div>
+<script>var _0xc28e=["","split","0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/","slice","indexOf","","",".","pow","reduce","reverse","0"];function _0xe32c(d,e,f){var g=_0xc28e[2][_0xc28e[1]](_0xc28e[0]);var h=g[_0xc28e[3]](0,e);var i=g[_0xc28e[3]](0,f);var j=d[_0xc28e[1]](_0xc28e[0])[_0xc28e[10]]()[_0xc28e[9]](function(a,b,c){if(h[_0xc28e[4]](b)!==-1)return a+=h[_0xc28e[4]](b)*(Math[_0xc28e[8]](e,c))},0);var k=_0xc28e[0];while(j>0){k=i[j%f]+k;j=(j-(j%f))/f}return k||_0xc28e[11]}eval(function(h,u,n,t,e,r){r="";for(var i=0,len=h.length;i<len;i++){var s="";while(h[i]!==n[e]){s+=h[i];i++}for(var j=0;j<n.length;j++)s=s.replace(new RegExp(n[j],"g"),j);r+=String.fromCharCode(_0xe32c(s,e,10)-t)}return decodeURIComponent(escape(r))}("xxhhpAxhxpxAxhpxpAxxhhhAxxxhpAxhxxpAxxhpxAxhpxhAhxxpAhphpAxxhhpAxhxpxAxhpxpAxxhhhAxxxhpAxhxxpAxxhpxAxhpxhAxpxxxAxxhxhAxhxppAhphpAhxxxAhhppAxhphpAxxhpxAxhphxAxhphhAxhpxpAhxxpAxhxxhAhpxxAhxphAxhpxpAxhpxhAxxhpxAxxhhhAxhpphAxxxhpAxxhppAhxphAxppxpAhpxxAhphpAxxxhpAxhphhAxhphxAxhpphAhphpAhxhxAhpxxAhxphAxhphpAxhphxAxhpxhAxxhpxAxhphxAxxxhhAxxhxxAxxhxhAxhppxAxxhxpAhxphAxppxpAhpxxAhphpAxxhpxAxhxphAxxxhpAxxxhhAxhphxAxxhphAxxhxhAxhphxAhphpAhxhxAhpxxAhxphAxhxpxAxxhxhAxxhppAxhphxAxxhxxAhxphAxppxpAhpxxAhphpAhhxpAhhphAhhphAhxppAhphpAhxhxAhpxxAhxphAxxhxxAxxhpxAxxhxhAxxhxpAxxhxxAxhphxAhxphAxppxpAhpxxAhphpAhhxxAhhphAhhphAhphpAhxhxAhpxxAhxphAxxhxhAxhpppAxxxhpAxxhxpAxxhpxAhxphAxppxpAhpxxAhphpAhphpAhxhxAhpxxAhxphAxxhhhAxhpphAxxhxpAxhpphAhxphAxppxpAhpxxAhphpAhphpAhxhxAhpxxAxxhphAxxhxhAxxhhhAxxhpxAxppxpAhpxxAhphpAxxhxxAxhphxAxhphxAxhpxpAxhphpAxppxpAhhpxAhhpxAxhpppAxxxhpAxxhppAxhpxpAxxhhhAxxxhpAxhxxpAhhppAxxhhhAxxhxhAxhxppAxxhpxAhhpxAxxhxxAxxhhhAxhphpAhhpxAxhphxAxxxhpAxhphxAxxxhpAhhpxAxhpppAxhpxpAxxhppAhhppAxhpxpAxxhxxAxhpxpAxpphhAxxhxhAxxhppAxpphpAhhxxAhhhpAhphpAhxhxAhpxxAxhphxAxhxxpAxhpxpAxxhpxAxppxpAhpxxAhphpAxxhppAxxxhpAxhphpAxxhxxAhphpAhxhxAhpxxAxxhppAxhpxhAxhpppAxppxpAhpxxAxhxxhAhpxxAhphpAxxxhhAxxhhhAxxhpxAxxxhpAxhpxhAxxhhxAxxhpxAxhxxpAhphpAxppxpAhpxxAxhxxhAhpxxAhphpAxxhhxAxxhpxAxhxxpAxphppAxxhppAhphpAxppxpAhphpAxxxhxAxxhpxAxxhphAxxhpxAxxhpxAxppphAhhhpAhhxxAxxxhxAhhhpAxppppAxxxhxAhhhxAhhxhAxppphAhhhpAxxxhxAxpppxAxxhppAxxhphAxxxhxAxpppxAhhhpAxpppxAhhhxAhhphAhhhxAxxxhpAhhhhAxppphAhhphAhhxpAhphpAhxhxAhphpAxxhhxAxxhpxAxhxxpAhphpAxppxpAhphpAhhhhAxppphAhhxxAxppphAxxxhhAxppppAhhxhAxxhphAxxhppAhhphAxxxhpAxxxhxAxpppxAxxxhhAhhxxAhhxhAhhxhAhhxxAxxhphAxxhppAxpppxAxxxhhAxxhppAxxhphAhhphAhhhxAhhphAxxhphAhhhhAhhxhAxxxhpAxxhphAhphpAhpxxAxhxhxAhpxxAxhxhxAxxppAxhxhxAhxxxAxppxxAxxppA",70,"pxhArUlCL",26,3,57))</script>				<!-- end video player -->
 
-<script>var channel_id = "95hin";</script>
-<video id="myElement"></video>
-<script type="text/JavaScript">
-    jwplayer("myElement").setup({
-     "autostart": false,
-    "preload": "none",
-     "repeat": true,
-     "Volume": "100",
-     "mute": false,
-     "stretching": "exactfit",
-     "width": "100%", 
-     "setPip": false,
-    
-        "playlist": [{
-           "sources": [
-        {
-          "default": false,
-          "type": "hls",
-          
- "file": "https://madplay.live/sports/crichd/master.m3u8/?id=starhindi&e=.m3u8",
- "label": "0" 
-       }
-      ],
-        }],
- "primary": "html5",
-  "hlshtml": true,
-  "autostart": true,
-//   width: "100%",
-  aspectratio: "16:9"
-
-    });
+  
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/crypto.js"></script>
+<script src="assets/js/jioUI2.js?v=a1"></script>
+<script>
+setTimeout(videovisible, 3000)
+function videovisible() { document.getElementById('loading').style.display = 'none'; }
+$(document).ready(function(){
+    player_precheck();
+});
 </script>
+
+
+	
 
 <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 
@@ -406,5 +464,7 @@
 <center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_t.js"></script><script type="text/javascript">sc_online_t(1686050,"Users Online","#000000");</script><br><noscript><a href="https://www.supercounters.com/">supercounters.com</a></noscript>
 </center>
 <!-- END: Powered by Supercounters.com -->
+
+</div>
+
 </body>
-</html>
