@@ -56,7 +56,7 @@
 </center>
 </div>
 <script>
-if(confirm("Join Our Telegram Channel @criccoder")) { window.location.href = "https://t.me/allinonereborn" }
+if(confirm("Join Our Telegram Channel @allinonereborn")) { window.location.href = "https://t.me/allinonereborn" }
     async function init(){let e=document.getElementById("video"),r=e.ui,n=r.getControls(),o=n.getPlayer();o.configure({drm:{clearKeys:{"9bc4071e714451ceb50b23487ad4a050":"d72ea49d483987571cfe37218bd8ddb0"}}}),r.configure({controlPanelElements:["play_pause","mute","volume","spacer","time_and_duration","quality","fullscreen","overflow_menu"],'volumeBarColors':{base:'rgba(63, 187, 1, 1)',level:'rgb(255, 69, 0)',},'seekBarColors':{base:'rgb(41, 41, 163)',buffered:'rgb(35, 99, 3)',played:'rgba(63, 187, 1, 1)',}}),window.player=o,window.ui=r,o.addEventListener("error",onPlayerErrorEvent),n.addEventListener("error",onUIErrorEvent);try{await o.load("https://bpprod3catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/xxx.mpd"),console.log("The video has now been loaded!")}catch(a){onPlayerError(a)}}function onPlayerErrorEvent(e){onPlayerError(event.detail)}function onPlayerError(e){console.error("Error code",e.code,"object",e)}function onUIErrorEvent(e){onPlayerError(event.detail)}function initFailed(e){console.error("Unable to load the UI library!")}document.addEventListener("shaka-ui-loaded",init),document.addEventListener("shaka-ui-load-failed",initFailed);
 </script>
 </body>
