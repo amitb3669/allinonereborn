@@ -38,9 +38,8 @@
 
         var player = jwplayer("jwplayerDiv").setup({
             file: config.file,
-            position: 'bottom',
             autostart: true,
-            stretching: "",
+            stretching: "uniform",
             width: "100%",
             type: "dash",
             drm: {
@@ -48,13 +47,24 @@
                     keyId: config.drm.clearkey.keyId,
                     key: config.drm.clearkey.key
                 }
+            },
+            // Optimize startup
+            preload: "auto", // Preload the video file
+            autostart: true, // Autostart on page load
+            playbackRateControls: false, // Disable rate controls for better loading
+            mute: true, // Muted to allow autoplay in most browsers
+            "defaultBandwidthEstimate": 300, // Start with a low bandwidth estimate to load faster
+            "bufferLength": 1, // Initial buffer to 1 second to start playback faster
+            "liveSyncDuration": 2, // Sync for live content, helps with DASH live streams
+            "dash": {
+                "lowLatencyMode": true // Enable low-latency mode
             }
         });
 
         // Set the lowest resolution available on player ready
         player.on('ready', function() {
             var qualities = player.getQualityLevels();
-            // Select the lowest quality
+            // Select the lowest quality for quick loading
             player.setCurrentQuality(qualities.length - 1);
         });
     </script>
