@@ -26,9 +26,17 @@
     <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <script type="text/javascript">
         // Use the PHP configuration directly within the JavaScript
-        var config = {"file":"https://aba5sdmaaaaaaaamo56zosqr4m7j7.otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/0y0tptbbjk/out/v1/8b1b95c2e6dc496abe14a3ae5c675917/cenc.mpd","drm":{"clearkey":{"keyId":"e90836d23b4ec1b5618b2e4f3a470d38","key":"08f968dd99717b22564fe1089258eb40"}}};
+        var config = {
+            "file": "https://aba5sdmaaaaaaaamo56zosqr4m7j7.otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/0y0tptbbjk/out/v1/8b1b95c2e6dc496abe14a3ae5c675917/cenc.mpd",
+            "drm": {
+                "clearkey": {
+                    "keyId": "e90836d23b4ec1b5618b2e4f3a470d38",
+                    "key": "08f968dd99717b22564fe1089258eb40"
+                }
+            }
+        };
 
-        jwplayer("jwplayerDiv").setup({
+        var player = jwplayer("jwplayerDiv").setup({
             file: config.file,
             position: 'bottom',
             autostart: true,
@@ -41,6 +49,13 @@
                     key: config.drm.clearkey.key
                 }
             }
+        });
+
+        // Set the lowest resolution available on player ready
+        player.on('ready', function() {
+            var qualities = player.getQualityLevels();
+            // Select the lowest quality
+            player.setCurrentQuality(qualities.length - 1);
         });
     </script>
 </body>
