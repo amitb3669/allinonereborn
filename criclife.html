@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>allinone_reborn</title>
-    <!-- Include the JW Player library -->
     <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
         body {
-            text-align: center; /* Center-align all content */
-            margin: 0;
-            padding: 0;
+            text-align: center;
         }
         #player-container {
-            display: inline-block; /* Keeps the player and ads aligned */
-            margin: 20px 0; /* Add space between player and ads */
+            display: inline-block;
+            margin: 20px 0;
         }
     </style>
 </head>
-<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
 
 <!-- Top Ad -->
@@ -55,14 +51,12 @@
 </div>
 
 <script>
-// The provided URL with the DRM parameters
+// Debug DRM Key Extraction
 var input_url = "https://live5.shoq.com.pk/live/eds/Criclife2/DASH/Criclife2.mpd?|drmScheme=clearkey&drmLicense=4301796d6d67374043c4a43c18dff7ea:96a3dc8766317aa169149a604928ebb6";
 
-// Extract the base URL and DRM license keys
 var parts = input_url.split('|');
-var url = parts[0]; // The DASH MPD URL
+var url = parts[0];
 var query_string = parts[1];
-
 var params = new URLSearchParams(query_string);
 var drmScheme = params.get('drmScheme');
 var drmLicense = params.get('drmLicense');
@@ -71,9 +65,11 @@ var k1, k2;
 
 if (drmScheme === 'clearkey' && drmLicense) {
     [k1, k2] = drmLicense.split(':');
+    console.log("DRM KeyId:", k1);
+    console.log("DRM Key:", k2);
 }
 
-// Setup JW Player if the URL and keys are present
+// Setup JW Player
 if (url && k1 && k2) {
     jwplayer("player").setup({
         playlist: [{
@@ -88,14 +84,12 @@ if (url && k1 && k2) {
             }]
         }],
         autostart: true,
-        width: "100%", 
-        height: "100%", 
-        stretching: "exactfit",
-        aspectratio: "16:9",
-        cast: {} // Enabling Chromecast support
+        width: "100%",
+        height: "360px",
+        aspectratio: "16:9"
     });
 } else {
-    console.error("Failed to extract DRM keys or URL from the input.");
+    console.error("Failed to initialize DRM keys or video URL.");
 }
 </script>
 
