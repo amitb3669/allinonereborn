@@ -68,6 +68,13 @@
       margin-top: 10px;
     }
   </style>
+  <style type='text/css'>
+/* Animation */
+@keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}@keyframes rubberBand{from{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,0.75,1)}40%{transform:scale3d(0.75,1.25,1)}50%{transform:scale3d(1.15,0.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}to{transform:scale3d(1,1,1)}}#arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}.inner h2{color: whitesmoke;text-shadow: black;}
+
+/* Say Hi to Adblock */
+#arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}
+</style>
 </head>
 
 <body>
@@ -120,6 +127,12 @@
       <a href="https://t.me/allinone_reborn" class="action-button animate green">Join Whatsapp</a>
     </p>
   </center>
+  <script type='text/javascript'>
+//<![CDATA[
+// Say Hi to Adblock
+function downloadJSAtOnload(){var e=document.createElement("script");e.src="https://cdn.jsdelivr.net/gh/Arlina-Design/quasar@master/arlinablock.js",document.body.appendChild(e)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
+//]]>
+</script>
 </body>
 
 </html>
