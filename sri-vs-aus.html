@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="" rel="icon" type="image/x-icon" />
+    <title>Fancod Live</title>
+    <style>
+        .video-js {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            text-align: center;
+            margin: 0;
+        }
+        #videojs {
+            width: 100%;
+            height: 100%;
+        }
+        .streaming-dimensions {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        #container {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #8a0000;
+            color: #fff;
+            overflow: hidden;
+        }
+        #iframe, #jwPlayer {
+            height: 100vh !important;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            position: absolute;
+            text-align: center;
+        }
+        video {
+            outline: 0;
+        }
+        #text {
+            position: fixed;
+            border: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            bottom: 50px;
+            text-align: center;
+            font-family: tahoma;
+            font-size: 20px;
+            z-index: 9999;
+        }
+    </style>
+    <script src="https://yosintv3.github.io/player/SAHhwvZq.js"></script>
+    <script src="https://yosintv3.github.io/player/jwplayer.js"></script>
+</head>
+    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+<body onload="init()">
+    <div id="jwPlayer"></div>
+    <script>
+        const _0x3dbf60=_0x4d5d;(function(_0x2df268,_0x1e6e49){const _0x4cf212=_0x4d5d,_0x176647=_0x2df268();while(!![]){try{const _0x7a13f7=parseInt(_0x4cf212(0x20b))/(0x930+0x253+-0xb82)+-parseInt(_0x4cf212(0x1f8))/(-0x836*0x3+0x26aa+0x703*-0x2)+-parseInt(_0x4cf212(0x1bc))/(0xcf+-0x21e5*0x1+0x2119)+-parseInt(_0x4cf212(0x1d4))/(-0x2331+0x1f*-0xf8+0x125*0x39)+parseInt(_0x4cf212(0x1fa))/(-0x24d*0x5+0x45*0x61+-0xe9f)*(-parseInt(_0x4cf212(0x207))/(-0x96e+0xb*-0x8d+-0xd1*-0x13))+-parseInt(_0x4cf212(0x208))/(-0xc94+-0x2508+-0x83*-0x61)+parseInt(_0x4cf212(0x1e3))/(0x2cb+-0x1988+0x43*0x57)*(parseInt(_0x4cf212(0x1c0))/(-0x52*0x5c+-0x12*0x19e+0xbb9*0x5));if(_0x7a13f7===_0x1e6e49)break;else _0x176647['push'](_0x176647['shift']());}catch(_0x4a528b){_0x176647['push'](_0x176647['shift']());}}}(_0x1365,0x91097+0x2*-0x92ab+0x1501e));function _0x4d5d(_0x57c3d2,_0x2fe0c0){const _0x573116=_0x1365();return _0x4d5d=function(_0x3584b5,_0x440979){_0x3584b5=_0x3584b5-(0x1eaf+0x1*-0x1c1b+0x10*-0xe);let _0x13a1ee=_0x573116[_0x3584b5];return _0x13a1ee;},_0x4d5d(_0x57c3d2,_0x2fe0c0);}const hardcodedUrl=_0x3dbf60(0x210)+_0x3dbf60(0x1d2)+_0x3dbf60(0x1ed)+_0x3dbf60(0x1f9)+_0x3dbf60(0x201)+_0x3dbf60(0x206)+_0x3dbf60(0x20f)+_0x3dbf60(0x1bb)+_0x3dbf60(0x1d5)+_0x3dbf60(0x1b4)+_0x3dbf60(0x1f6)+_0x3dbf60(0x1c6)+_0x3dbf60(0x1c1)+_0x3dbf60(0x1d8)+_0x3dbf60(0x1cd)+_0x3dbf60(0x1ea)+_0x3dbf60(0x202)+_0x3dbf60(0x1f4)+_0x3dbf60(0x1ee)+_0x3dbf60(0x204)+_0x3dbf60(0x1c5)+_0x3dbf60(0x20d)+_0x3dbf60(0x1f2)+_0x3dbf60(0x1c9)+_0x3dbf60(0x1df)+_0x3dbf60(0x1d6)+_0x3dbf60(0x1cf)+_0x3dbf60(0x1fd)+_0x3dbf60(0x1f5)+_0x3dbf60(0x1fc)+_0x3dbf60(0x1f3)+_0x3dbf60(0x1b7)+_0x3dbf60(0x1ec)+_0x3dbf60(0x1de)+_0x3dbf60(0x205)+_0x3dbf60(0x209)+_0x3dbf60(0x1e6)+_0x3dbf60(0x1d1)+_0x3dbf60(0x1e0)+_0x3dbf60(0x1e9)+_0x3dbf60(0x1dd)+_0x3dbf60(0x1c7)+_0x3dbf60(0x1e2)+_0x3dbf60(0x1d0)+_0x3dbf60(0x1c3)+_0x3dbf60(0x1d7)+_0x3dbf60(0x1ef)+_0x3dbf60(0x20a)+_0x3dbf60(0x1fb)+_0x3dbf60(0x1d9)+_0x3dbf60(0x1e7)+_0x3dbf60(0x1cb)+_0x3dbf60(0x1f0)+_0x3dbf60(0x1eb)+_0x3dbf60(0x1be)+_0x3dbf60(0x1e4)+_0x3dbf60(0x1bd)+_0x3dbf60(0x1ba)+_0x3dbf60(0x1b5)+_0x3dbf60(0x200)+_0x3dbf60(0x1c8)+_0x3dbf60(0x1bf)+_0x3dbf60(0x1b6)+_0x3dbf60(0x1da)+_0x3dbf60(0x1ce)+_0x3dbf60(0x1f7)+_0x3dbf60(0x1dc)+_0x3dbf60(0x1ca)+_0x3dbf60(0x1f1)+_0x3dbf60(0x1c4)+_0x3dbf60(0x1b8)+_0x3dbf60(0x1e1)+_0x3dbf60(0x1b9)+_0x3dbf60(0x1db)+_0x3dbf60(0x1e5)+_0x3dbf60(0x20e)+_0x3dbf60(0x1ff)+_0x3dbf60(0x1c2)+_0x3dbf60(0x1cc)+_0x3dbf60(0x203)+_0x3dbf60(0x1e8);jwplayer(_0x3dbf60(0x1fe))[_0x3dbf60(0x1d3)]({'file':hardcodedUrl,'width':_0x3dbf60(0x211),'height':_0x3dbf60(0x211),'stretching':_0x3dbf60(0x20c),'autostart':!![]});function _0x1365(){const _0x1f04f6=['9b755d6182','4a4188b817','k=ca3c6417','731010IWBqav','2179765dXgipC','658b1952c7','7382cb7ebb','516426tPpGyk','uniform','ed3f365e8c','2efb7f63ad','44d3fab0d2','https://fc','100%','f47a638daa','349c3f195e','a14a0bff3d','962393203b','862d86e380','5ce5c0a42d','03b0e32f92','d35088c837','913488DLuDeV','3ea990d06d','40eddbc02d','830f0e2bcb','21505779aAJwqM','cddfcb9d3e','91b1de3b86','57dff5bb7f','8cfd9fc775','1bcb12bae9','a301f91760','a7b09910cf','04e0c8af1f','25348e714c','35c396cab6','ce24684fac','853f0f76&p','a4e6f2bd6f','15960120b9','66d0cec57c','d853f34c20','cfd21d4105','.pstvlive.','setup','3404700dbjJlL','50da099db4','7c66119c2e','cc7e54d2b6','cc02f5f20e','fe034645f6','498bf8aeb6','8520cc2eee','ef6274d3b5','d1e7b7ef57','85b3e0a8e6','b88b18b8f7','cce28fbbc9','714ad6ce00','f89cce4b5b','8IriWWh','dbf04a859b','37cc840d93','82b8f234bd','f2e926e6a3','ial_token=','c1118c4628','465bf8e298','acebc7ccc5','8feb175519','xyz/w/hls/','a6673905b8','74c8a4f7a3','f47d9a50fd','69991890b0','917baec81d','73001cb0c6','be638867c3','45a15c42d1','f427b40e6c','746dd847d9','1424066YjfUru','index.m3u8','5kZHWeJ','fc2c13c5c5','1cf1921b1a','660d171920','jwPlayer','e1974862a0','7a8ac76344','?psplaylin','f6e9c3b968','splay_spec'];_0x1365=function(){return _0x1f04f6;};return _0x1365();}
+    </script>
+
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync = _Hasync || [];
+        _Hasync.push(['Histats.start', '1,4923601,4,0,0,0,00010000']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function () {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4923601&101" alt="free counter" border="0"></a></noscript>
+    <!-- Histats.com END -->
+
+    <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
+        <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+        <script type="text/javascript">sc_online_i(1707252, "ffffff", "ffffff");</script>
+        <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
+    </div>
+</body>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+</html>
