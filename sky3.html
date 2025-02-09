@@ -3,90 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>allinone_reborn</title>
-    <!-- Include the JW Player library -->
-    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-	<style type='text/css'>
-/* Animation */
-@keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}@keyframes rubberBand{from{transform:scale3d(1,1,1)}30%{transform:scale3d(1.25,0.75,1)}40%{transform:scale3d(0.75,1.25,1)}50%{transform:scale3d(1.15,0.85,1)}65%{transform:scale3d(.95,1.05,1)}75%{transform:scale3d(1.05,.95,1)}to{transform:scale3d(1,1,1)}}#arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}.inner h2{color: whitesmoke;text-shadow: black;}
-
-/* Say Hi to Adblock */
-#arlinablock{background:rgba(0,0,0,0.65);position:fixed;margin:auto;left:0;right:0;top:0;bottom:0;overflow:auto;z-index:999999;animation:fadeInDown 1s}#arlinablock .header{margin:0 0 15px}#arlinablock .inner{background:#E74C3C;color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:center;width:600px;padding:40px;border-radius:5px;margin:7% auto 2%;animation:rubberBand 1s}#arlinablock button{padding:10px 20px;border:0;background:rgba(0,0,0,0.15);color:#fff;margin:20px 5px;cursor:pointer;transition:all .3s}#arlinablock button:hover{background:rgba(0,0,0,0.35);color:#fff;outline:none}#arlinablock button.active,#arlinablock button:hover.active{background:#fff;color:#222;outline:none}#arlinablock .fixblock{background:#fff;text-align:left;color:#000;padding:20px;height:250px;overflow:auto;line-height:30px}#arlinablock .fixblock div{display:none}#arlinablock .fixblock div.active{display:block}#arlinablock ol{margin-left:20px}@media(max-width:768px){#arlinablock .inner{width:calc(100% - 20px);margin:10px auto;padding:15px}}
-</style>
+    <title>@allinone_reborn</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
 </head>
-<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
+    <!-- Top Ad -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
 
-<div id="player"></div>
+    <!-- Centered Iframe -->
+    <iframe src="https://tapmadtv.live/play.php?c=sky3nz" allowfullscreen style="width: 90%; max-width: 700px; height: 50%; max-height: 400px; border: none;"></iframe>
+    
+    <!-- Bottom Ad -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+    <!-- Anti-Adblock Popup -->
+    <div class="adb" id="adb">
+        <div class="adbs">
+            <h3>Adblock Detected</h3>
+            <p>Please disable adblock to proceed to the destination page</p>
+        </div>
+    </div>
 
-<script>
-// The provided URL with the DRM parameters
-var input_url = "https://linear-s.media.skyone.co.nz/sky-sport-2.mpd?|drmScheme=clearkey&drmLicense=ef909acce1f53f5db2a1cdafd2e90000:aba1269d685f474fbddf97ce2b45c725";
+    <style>
+        .adb {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(51, 51, 51, 0.9);
+            z-index: 10000;
+            text-align: center;
+            color: #111;
+        }
 
-// Extract the base URL and DRM license keys
-var parts = input_url.split('|');
-var url = parts[0]; // The DASH MPD URL
-var query_string = parts[1];
+        .adbs {
+            margin: 0 auto;
+            width: auto;
+            min-width: 400px;
+            position: fixed;
+            z-index: 99999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 30px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+    </style>
 
-var params = new URLSearchParams(query_string);
-var drmScheme = params.get('drmScheme');
-var drmLicense = params.get('drmLicense');
+    <script type="text/javascript">
+        async function detectAdBlock() {
+            let adBlockEnabled = false;
+            const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
 
-var k1, k2;
-
-if (drmScheme === 'clearkey' && drmLicense) {
-    [k1, k2] = drmLicense.split(':');
-}
-
-// Setup JW Player if the URL and keys are present
-if (url && k1 && k2) {
-    jwplayer("player").setup({
-        playlist: [{
-            sources: [{
-                file: url,
-                drm: {
-                    clearkey: {
-                        keyId: k1,
-                        key: k2
-                    }
-                }
-            }]
-        }],
-        autostart: true,
-        width: "100%", 
-        height: "100%", 
-        stretching: "exactfit",
-        aspectratio: "16:9",
-        cast: {} // Enabling Chromecast support
-    });
-} else {
-    console.error("Failed to extract DRM keys or URL from the input.");
-}
-</script>
-	<script type='text/javascript'>
-//<![CDATA[
-// Say Hi to Adblock
-function downloadJSAtOnload(){var e=document.createElement("script");e.src="https://cdn.jsdelivr.net/gh/Arlina-Design/quasar@master/arlinablock.js",document.body.appendChild(e)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
-//]]>
-</script>
+            try {
+                await fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true);
+            } catch (e) {
+                adBlockEnabled = true;
+            } finally {
+                if (adBlockEnabled) document.getElementById("adb").style.display = "block";
+            }
+        }
+        detectAdBlock();
+    </script>
 </body>
-<script type="text/javascript">
-	atOptions = {
-		'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>  <script type="text/javascript">
-	atOptions = {
-		'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
