@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="icon" type="image/x-icon" />
-    <title>allinone</title>
+    <title>allinone_reborn</title>
     <style>
         .video-js {
             width: 100%;
@@ -68,7 +68,17 @@
 <body onload="init()">
     <div id="jwPlayer"></div>
     <script>
-        const _0x423143=_0x1cb5;function _0x2c89(){const _0xb1c6ba=['om/SkySpor','cd53eb6146','-63f83e731','setup','9028e4e754','k_ip','jwPlayer','888-173885','976076TgYJZx','14639449HPvNww','t01/index.','8957897048','mpd?token=','https://cd','uniform','7592-17388','1663120OUTwqE','198942gafiWm','867e1621cb','6bxJcDl','46792&remo','3e68deb9b8','n.sturls.c','22104wLvSsm','2661318xITwkP','228855BKgzSa','2562mOGdXe','5PVExif','7397da6d61','100%','te=no_chec','10poIxMg'];_0x2c89=function(){return _0xb1c6ba;};return _0x2c89();}(function(_0x2e1bf4,_0x296b39){const _0x19d29f=_0x1cb5,_0x525950=_0x2e1bf4();while(!![]){try{const _0x198ac2=-parseInt(_0x19d29f(0x13d))/(-0x2*0x1222+-0x4bb*-0x3+0x75c*0x3)+parseInt(_0x19d29f(0x134))/(-0x25ff+-0x44e+0x2a4f*0x1)+parseInt(_0x19d29f(0x137))/(-0x1*0x2152+-0x463*0x1+0x25b8)*(parseInt(_0x19d29f(0x12c))/(-0x11c3+-0x15eb*0x1+-0x13d9*-0x2))+parseInt(_0x19d29f(0x13f))/(0x465*-0x3+0x1140+-0x40c)*(parseInt(_0x19d29f(0x135))/(-0x55b+0x61f*0x2+0x1*-0x6dd))+parseInt(_0x19d29f(0x13e))/(-0x223f+0x44f*0x4+0x110a)*(parseInt(_0x19d29f(0x13b))/(0x9*0x3be+0xc9*0x25+-0x3eb3))+parseInt(_0x19d29f(0x13c))/(0xb*0x12d+0x1*0x767+-0x144d*0x1)*(-parseInt(_0x19d29f(0x143))/(-0x16d9+-0x2260+-0x6b*-0x89))+-parseInt(_0x19d29f(0x12d))/(-0x493*0x3+-0x887*-0x1+-0x9*-0x95);if(_0x198ac2===_0x296b39)break;else _0x525950['push'](_0x525950['shift']());}catch(_0x2f376c){_0x525950['push'](_0x525950['shift']());}}}(_0x2c89,0x22ef7*0x2+-0xc636*0x13+-0x1*-0x121ac9));function _0x1cb5(_0x1c14c2,_0x4a7afa){const _0xa5ddbd=_0x2c89();return _0x1cb5=function(_0x3235d9,_0x59ce48){_0x3235d9=_0x3235d9-(-0x125+0x2387+-0x213b);let _0x2b4d3c=_0xa5ddbd[_0x3235d9];return _0x2b4d3c;},_0x1cb5(_0x1c14c2,_0x4a7afa);}const hardcodedUrl=_0x423143(0x131)+_0x423143(0x13a)+_0x423143(0x144)+_0x423143(0x12e)+_0x423143(0x130)+_0x423143(0x128)+_0x423143(0x12f)+_0x423143(0x145)+_0x423143(0x139)+_0x423143(0x146)+_0x423143(0x140)+_0x423143(0x136)+_0x423143(0x12b)+_0x423143(0x133)+_0x423143(0x138)+_0x423143(0x142)+_0x423143(0x129);jwplayer(_0x423143(0x12a))[_0x423143(0x127)]({'file':hardcodedUrl,'width':_0x423143(0x141),'height':_0x423143(0x141),'stretching':_0x423143(0x132),'autostart':!![]});
+        // Hardcoded M3U8 URL
+        const hardcodedUrl = "https://cdn.sturls.com/SkySport01/index.mpd?token=d55e5989e0a26297372e6fea9b6fbcd76e05bead-9bcc6e6d253fa9facf9e4023c2ce9a0f-1739096147-1739085347&remote=no_check_ip";
+
+        // Setup JW Player with autoplay
+        jwplayer("jwPlayer").setup({
+            file: hardcodedUrl,
+            width: "100%",
+            height: "100%",
+            stretching: "uniform",
+            autostart: true, // Enable autoplay
+        });
     </script>
 
     <!-- Histats.com START (async) -->
@@ -91,6 +101,58 @@
         <script type="text/javascript">sc_online_i(1707252, "ffffff", "ffffff");</script>
         <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
     </div>
+    <!-- Anti-Adblock Popup -->
+    <div class="adb" id="adb">
+        <div class="adbs">
+            <h3>Adblock Detected</h3>
+            <p>Please disable adblock to proceed to the destination page</p>
+        </div>
+    </div>
+
+    <style>
+        .adb {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(51, 51, 51, 0.9);
+            z-index: 10000;
+            text-align: center;
+            color: #111;
+        }
+
+        .adbs {
+            margin: 0 auto;
+            width: auto;
+            min-width: 400px;
+            position: fixed;
+            z-index: 99999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 30px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        async function detectAdBlock() {
+            let adBlockEnabled = false;
+            const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+            try {
+                await fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true);
+            } catch (e) {
+                adBlockEnabled = true;
+            } finally {
+                if (adBlockEnabled) document.getElementById("adb").style.display = "block";
+            }
+        }
+        detectAdBlock();
+    </script>
 </body>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
