@@ -63,6 +63,58 @@
         </script>
         <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
     </div>
+    <!-- Anti-Adblock Popup -->
+    <div class="adb" id="adb">
+        <div class="adbs">
+            <h3>Adblock Detected</h3>
+            <p>Please disable adblock to proceed to the destination page</p>
+        </div>
+    </div>
+
+    <style>
+        .adb {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(51, 51, 51, 0.9);
+            z-index: 10000;
+            text-align: center;
+            color: #111;
+        }
+
+        .adbs {
+            margin: 0 auto;
+            width: auto;
+            min-width: 400px;
+            position: fixed;
+            z-index: 99999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 30px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        async function detectAdBlock() {
+            let adBlockEnabled = false;
+            const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+            try {
+                await fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true);
+            } catch (e) {
+                adBlockEnabled = true;
+            } finally {
+                if (adBlockEnabled) document.getElementById("adb").style.display = "block";
+            }
+        }
+        detectAdBlock();
+    </script>
 </body>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
