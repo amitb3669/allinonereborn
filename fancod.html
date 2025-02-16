@@ -1,99 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.32.1/jwplayer.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="" rel="icon" type="image/x-icon" />
-    <title>Fancod Live</title>
+    <title>Player</title>
     <style>
-        .video-js {
-            width: 100%;
-            height: 100%;
-        }
         body {
-            text-align: center;
-            margin: 0;
-        }
-        #videojs {
-            width: 100%;
-            height: 100%;
-        }
-        .streaming-dimensions {
-            width: 100% !important;
-            height: 100% !important;
-        }
-        #container {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background: #8a0000;
-            color: #fff;
-            overflow: hidden;
-        }
-        #iframe, #jwPlayer {
-            height: 100vh !important;
-            padding: 0;
-            margin: 0;
-        }
-        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            margin: 0;
-            padding: 0;
+            background-color: black;
         }
-        #container {
-            position: absolute;
-            text-align: center;
-        }
-        video {
-            outline: 0;
-        }
-        #text {
-            position: fixed;
-            border: 0;
-            left: 0;
+
+        #player-container {
             width: 100%;
-            color: #fff;
-            bottom: 50px;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: 10px 0;
+        }
+
+        /* Custom scrollbar styles */
+        body::-webkit-scrollbar {
+            width: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(140, 140, 140, 0.5);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(140, 140, 140, 0.7);
+        }
+
+        .ad-container {
+            margin: 10px 0;
             text-align: center;
-            font-family: tahoma;
-            font-size: 20px;
-            z-index: 9999;
         }
     </style>
-    <script src="https://yosintv3.github.io/player/SAHhwvZq.js"></script>
-    <script src="https://yosintv3.github.io/player/jwplayer.js"></script>
 </head>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-<body onload="init()">
-    <div id="jwPlayer"></div>
-    <script>
-        function _0x29b8(){const _0x1fd627=['8524865GaFVFJ','1179KbvSDd','ddyxiptv.c','imary/1174','.m3u8','24tTVZnc','2128091CfWNWJ','23mLYnLi','jwPlayer','/global/pr','408LntWVD','35858tXIkNz','17016KLwZzK','https://bu','2955140xLrCgI','36136sOWqon','5657172sSLPZb','om/fancode','44chfgTc','100%','_hls_4964t','setup','uniform','a-no/index','17_english'];_0x29b8=function(){return _0x1fd627;};return _0x29b8();}function _0x37b2(_0x258240,_0x52d6e7){const _0x742455=_0x29b8();return _0x37b2=function(_0x1204bd,_0x581f9a){_0x1204bd=_0x1204bd-(-0x7b8+-0x497*-0x3+-0x4ec);let _0x2522ed=_0x742455[_0x1204bd];return _0x2522ed;},_0x37b2(_0x258240,_0x52d6e7);}const _0x49dc84=_0x37b2;(function(_0x25d4f2,_0x5d5f07){const _0xf0e83e=_0x37b2,_0x5b1753=_0x25d4f2();while(!![]){try{const _0x490517=parseInt(_0xf0e83e(0x12a))/(0x5c*-0x2+-0x6*0xb2+-0x1*-0x4e5)*(-parseInt(_0xf0e83e(0x12e))/(0x1*0x1a87+0x9f0+0x2475*-0x1))+-parseInt(_0xf0e83e(0x12f))/(-0x4*-0x6ab+-0x1a73*0x1+0x1*-0x36)*(parseInt(_0xf0e83e(0x12d))/(0x23fe*-0x1+0x2*0x773+-0x304*-0x7))+parseInt(_0xf0e83e(0x123))/(0x2*0x10b8+0x45*-0x26+0x15d*-0x11)+-parseInt(_0xf0e83e(0x128))/(-0x2256+-0x9d3*0x1+0x2c2f)*(-parseInt(_0xf0e83e(0x129))/(0x928*-0x3+-0x2110+0x3c8f))+-parseInt(_0xf0e83e(0x132))/(0x123f*-0x2+0xc6f*0x2+0x2*0x5d4)*(-parseInt(_0xf0e83e(0x124))/(-0x1f75+0x1*-0x2353+0x42d1))+parseInt(_0xf0e83e(0x131))/(0xd37+0x26*-0xf4+-0x11*-0x15b)+parseInt(_0xf0e83e(0x135))/(0x1d60+0x1*-0x2345+-0x2f8*-0x2)*(-parseInt(_0xf0e83e(0x133))/(0x1b4e+-0x5*-0x44+-0x2*0xe4b));if(_0x490517===_0x5d5f07)break;else _0x5b1753['push'](_0x5b1753['shift']());}catch(_0x3df671){_0x5b1753['push'](_0x5b1753['shift']());}}}(_0x29b8,-0x50b*0x25f+-0x1b3642+0x356286));const hardcodedUrl=_0x49dc84(0x130)+_0x49dc84(0x125)+_0x49dc84(0x134)+_0x49dc84(0x12c)+_0x49dc84(0x126)+_0x49dc84(0x122)+_0x49dc84(0x137)+_0x49dc84(0x121)+_0x49dc84(0x127);jwplayer(_0x49dc84(0x12b))[_0x49dc84(0x138)]({'file':hardcodedUrl,'width':_0x49dc84(0x136),'height':_0x49dc84(0x136),'stretching':_0x49dc84(0x139),'autostart':!![]});
-    </script>
+<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 
-    <!-- Histats.com START (async) -->
-    <script type="text/javascript">
-        var _Hasync = _Hasync || [];
-        _Hasync.push(['Histats.start', '1,4923601,4,0,0,0,00010000']);
-        _Hasync.push(['Histats.fasi', '1']);
-        _Hasync.push(['Histats.track_hits', '']);
-        (function () {
-            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-            hs.src = ('//s10.histats.com/js15_as.js');
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-        })();
-    </script>
-    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4923601&101" alt="free counter" border="0"></a></noscript>
-    <!-- Histats.com END -->
-
-    <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
-        <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
-        <script type="text/javascript">sc_online_i(1707252, "ffffff", "ffffff");</script>
-        <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
+<body>
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
     </div>
+
+    <div id="player-container"></div>
+
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+
+    <script type="text/javascript">
+        jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
+        jwplayer("player-container").setup({
+            file: "https://a166aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/clients/dash/enc/gdhz5mhnyu/out/v1/fe72171ab2684ab8b9ee3e2ffcc9cff2/cenc.mpd",
+            aspectratio: '16:9',
+            width: '100%',
+            autostart: true,
+            image: 'https://mma.prnewswire.com/media/1919551/WillowTV_Logo.jpg?p=facebook',
+            mute: false,
+            preload: 'auto',
+            captions: { color: 'white', fontSize: '16px', backgroundOpacity: 0 },
+            sharing: {
+                sites: ['facebook', 'twitter']
+            },
+            drm: {
+                "clearkey": {
+                    "keyId": "159a2b4e1d2d7f16892d35d935a2fb34",
+                    "key": "07809840dd0f511221ca78459167d1b3"
+                }
+            }
+        });
+
+        // Ensure playback compatibility for mobile devices
+        jwplayer().on('ready', function () {
+            const player = document.querySelector('#player-container');
+            if (player) {
+                player.style.height = window.innerHeight + 'px';
+            }
+        });
+
+        jwplayer().on('play', function () {
+            document.body.style.backgroundColor = "#000";
+        });
+
+        jwplayer().on('error', function (e) {
+            console.error("Playback error:", e.message);
+        });
+    </script>
 </body>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
 </html>
