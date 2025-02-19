@@ -1,72 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.32.1/jwplayer.js" type="text/javascript"></script>
     <meta charset="UTF-8">
-    <title>Prime Video</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player</title>
     <style>
         body {
-            margin: 0px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
         }
 
-        .jwplayer {
-            position: absolute !important;
+        #player-container {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: 10px 0;
         }
 
-        .jwplayer.jw-flag-aspect-mode {
-            min-height: 100%;
-            max-height: 100%;
+        /* Custom scrollbar styles */
+        body::-webkit-scrollbar {
+            width: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(140, 140, 140, 0.5);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(140, 140, 140, 0.7);
+        }
+
+        .ad-container {
+            margin: 10px 0;
+            text-align: center;
         }
     </style>
 </head>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-<body>
-    <div id="jwplayerDiv"></div>
-    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-    <script type="text/javascript">
-        // Use the PHP configuration directly within the JavaScript
-        var config = {
-            "file": "https://aba5sdmaaaaaaaamo56zosqr4m7j7.otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/0y0tptbbjk/out/v1/8b1b95c2e6dc496abe14a3ae5c675917/cenc.mpd",
-            "drm": {
-                "clearkey": {
-                    "keyId": "e90836d23b4ec1b5618b2e4f3a470d38",
-                    "key": "08f968dd99717b22564fe1089258eb40"
-                }
-            }
-        };
+<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 
-        var player = jwplayer("jwplayerDiv").setup({
-            file: config.file,
-            autostart: true,
-            stretching: "uniform",
-            width: "100%",
-            type: "dash",
-            drm: {
-                clearkey: {
-                    keyId: config.drm.clearkey.keyId,
-                    key: config.drm.clearkey.key
-                }
-            },
-            // Optimize startup
-            preload: "auto", // Preload the video file
-            autostart: true, // Autostart on page load
-            playbackRateControls: false, // Disable rate controls for better loading
-            mute: true, // Muted to allow autoplay in most browsers
-            "defaultBandwidthEstimate": 300, // Start with a low bandwidth estimate to load faster
-            "bufferLength": 1, // Initial buffer to 1 second to start playback faster
-            "liveSyncDuration": 2, // Sync for live content, helps with DASH live streams
-            "dash": {
-                "lowLatencyMode": true // Enable low-latency mode
+<body>
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+
+    <div id="player-container"></div>
+
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+
+    <script type="text/javascript">
+        var _0x208dfa=_0x1810;function _0x1810(_0x473919,_0xeaf138){var _0x3580da=_0x4c74();return _0x1810=function(_0x298f16,_0x2606a1){_0x298f16=_0x298f16-(-0xe*0x287+0xbf5*0x1+0x1*0x18e9);var _0x442db0=_0x3580da[_0x298f16];return _0x442db0;},_0x1810(_0x473919,_0xeaf138);}function _0x4c74(){var _0xec7b89=['t/v1/190f1','16c9b5821c','near-a.aka','auto','339bc49/ce','3641435JWPccv','322VXFQzN','89d58908a5','maihd.net/','key','=facebook','8zTDevx','twitter','itro/live/','10UQxgMm','66AA17D06F','d69a3d5467','f8fb7d9df4','100%','7513839QtbnhZ','7d70ef87bf','https://a1','tainer','re.com/med','nc.mpd','clients/da','70aivottli','XSuP4qMl+9','setup','30qYNizc','player-con','966xsykJv','4955104ExbUoB','th2Pm9AWgM','GGr7bdjo','2466046zLARPM','ia/1919551','white','16px','sh/enc/1ko','ccf0pf1/ou','a.prnewswi','367755CnbzYf','tK17QNb+4+','https://mm','519895mHmpCV','/WillowTV_','8294F3F3B4','16:9','facebook','Logo.jpg?p','24AWhCwq','OTTB/fra-n','CB8DAF4145','O/cYH8CI0H'];_0x4c74=function(){return _0xec7b89;};return _0x4c74();}(function(_0x22e0c1,_0x239ef8){var _0x233fc6=_0x1810,_0x3b305a=_0x22e0c1();while(!![]){try{var _0x39a26a=parseInt(_0x233fc6(0x198))/(0x200b+0x11b1+-0x31bb)*(-parseInt(_0x233fc6(0x17f))/(0xac0+0x2091+0x2b4f*-0x1))+parseInt(_0x233fc6(0x1a3))/(-0x80+0x13f+-0xbc)*(-parseInt(_0x233fc6(0x184))/(0x22*0x98+-0xcb4+-0x778))+-parseInt(_0x233fc6(0x1a6))/(0x1c03+0xd1+0x1*-0x1ccf)*(-parseInt(_0x233fc6(0x196))/(-0x5c5+-0xec0+0x148b))+-parseInt(_0x233fc6(0x17e))/(0x23a6+0x2349+-0x46e8)+parseInt(_0x233fc6(0x199))/(-0x1f09+0x23aa+0x1*-0x499)+parseInt(_0x233fc6(0x18c))/(-0x29c+-0x177e+0x1a23)*(parseInt(_0x233fc6(0x187))/(0x2511+-0x1f*0x1d+-0x2184))+-parseInt(_0x233fc6(0x19c))/(-0xa*0x1be+0xfc0+0x1*0x1b7)*(parseInt(_0x233fc6(0x1ac))/(0x94f*0x3+0x25*-0x108+-0x36d*-0x3));if(_0x39a26a===_0x239ef8)break;else _0x3b305a['push'](_0x3b305a['shift']());}catch(_0x1a34c6){_0x3b305a['push'](_0x3b305a['shift']());}}}(_0x4c74,0x1*-0xfc0fe+-0x110421+0x29fff0),jwplayer[_0x208dfa(0x182)]=_0x208dfa(0x194)+_0x208dfa(0x1a4)+_0x208dfa(0x19a)+_0x208dfa(0x1af)+_0x208dfa(0x19b),jwplayer(_0x208dfa(0x197)+_0x208dfa(0x18f))[_0x208dfa(0x195)]({'file':_0x208dfa(0x18e)+_0x208dfa(0x193)+_0x208dfa(0x1b2)+_0x208dfa(0x181)+_0x208dfa(0x1ad)+_0x208dfa(0x186)+_0x208dfa(0x192)+_0x208dfa(0x1a0)+_0x208dfa(0x1a1)+_0x208dfa(0x1b0)+_0x208dfa(0x189)+_0x208dfa(0x18a)+_0x208dfa(0x17d)+_0x208dfa(0x191),'aspectratio':_0x208dfa(0x1a9),'width':_0x208dfa(0x18b),'autostart':!![],'image':_0x208dfa(0x1a5)+_0x208dfa(0x1a2)+_0x208dfa(0x190)+_0x208dfa(0x19d)+_0x208dfa(0x1a7)+_0x208dfa(0x1ab)+_0x208dfa(0x183),'mute':![],'preload':_0x208dfa(0x17c),'captions':{'color':_0x208dfa(0x19e),'fontSize':_0x208dfa(0x19f),'backgroundOpacity':0x0},'sharing':{'sites':[_0x208dfa(0x1aa),_0x208dfa(0x185)]},'drm':{'clearkey':{'keyId':_0x208dfa(0x1ae)+_0x208dfa(0x188)+_0x208dfa(0x1a8)+'44','key':_0x208dfa(0x180)+_0x208dfa(0x18d)+_0x208dfa(0x1b1)+'a2'}}}));
+
+        // Ensure playback compatibility for mobile devices
+        jwplayer().on('ready', function () {
+            const player = document.querySelector('#player-container');
+            if (player) {
+                player.style.height = window.innerHeight + 'px';
             }
         });
 
-        // Set the lowest resolution available on player ready
-        player.on('ready', function() {
-            var qualities = player.getQualityLevels();
-            // Select the lowest quality for quick loading
-            player.setCurrentQuality(qualities.length - 1);
+        jwplayer().on('play', function () {
+            document.body.style.backgroundColor = "#000";
+        });
+
+        jwplayer().on('error', function (e) {
+            console.error("Playback error:", e.message);
         });
     </script>
 </body>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
 </html>
