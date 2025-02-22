@@ -1,82 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link type="text/css" rel="stylesheet" id="dark-mode-custom-link" />
-  <link type="text/css" rel="stylesheet" id="dark-mode-general-link" />
-  <style type="text/css" id="dark-mode-custom-style" lang="en"></style>
-  <style type="text/css" id="dark-mode-native-style" lang="en"></style>
-  <style type="text/css" id="dark-mode-native-sheet" lang="en"></style>
-  <head>
-    <meta charset="UTF-8" />
-    <title></title>
-    <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-  </head>
-  <body data-new-gr-c-s-check-loaded="8.904.0" data-gr-ext-installed="">
-    <header class="header"></header>
-    <div class="site-content">
-      <div class="containerbox">
-        <center>
-          <!-- Ad Script Above Player -->
-          <div style="margin-bottom: 10px;">
-            <script type="text/javascript">
-              atOptions = {
-                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
-                'format': 'iframe',
-                'height': 90,
-                'width': 728,
-                'params': {}
-              };
-            </script>
-            <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
-          </div>
-          <!-- Video Player -->
-          <div id="player-container"></div>
-          <script>
-            // Initialize JW Player
-            var player = jwplayer("player-container");
 
-            // Setup JW Player configuration
-            player.setup({
-              file: "https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/hdntl=exp=1740298807~acl=%2f*~data=hdntl~hmac=51fadfcbed4285d476b83ec00204b5b91ae6211b9c8cae4721a77453fb00b761/Sports18_1_HD_voot_MOB-audio_108038_eng=108000-video=3728000.m3u8",
-              width: "100%",
-              stretching: "",
-              type: "hls",
-              autostart: "true",
-              mute: "false",
-              primary: "html5",
-              logo: {
-                file: "https://i.ibb.co/hXw44BG/output-onlinegiftools.gif",
-                hide: "false",
-                position: "top-right",
-              }
-            });
-          </script>
-          <!-- Ad Script Below Player -->
-          <div style="margin-top: 10px;">
-            <script type="text/javascript">
-              atOptions = {
+<head>
+    <script src="https://ssl.p.jwpcdn.com/player/v/8.32.1/jwplayer.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        #player-container {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: 10px 0;
+        }
+
+        /* Custom scrollbar styles */
+        body::-webkit-scrollbar {
+            width: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(140, 140, 140, 0.5);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(140, 140, 140, 0.7);
+        }
+
+        .ad-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+
+<body>
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
                 'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
                 'format': 'iframe',
                 'height': 90,
                 'width': 728,
                 'params': {}
-              };
-            </script>
-            <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
-          </div>
-        </center>
-      </div>
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
     </div>
-  </body>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
+    <div id="player-container"></div>
+
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+
+    <script type="text/javascript">
+        var _0x19d7dd=_0x49f5;function _0x49f5(_0x3509da,_0x576a5c){var _0x581d54=_0x1dbe();return _0x49f5=function(_0x4ff0f7,_0x4cb604){_0x4ff0f7=_0x4ff0f7-(0xf43+0x1*0x1be7+-0x29b5);var _0x3fcbd6=_0x581d54[_0x4ff0f7];return _0x3fcbd6;},_0x49f5(_0x3509da,_0x576a5c);}(function(_0x1a3b82,_0x17e186){var _0x5c0eed=_0x49f5,_0x5e7265=_0x1a3b82();while(!![]){try{var _0x6cbba9=parseInt(_0x5c0eed(0x197))/(-0x289*0x7+0x1*0x2038+-0xe78)+-parseInt(_0x5c0eed(0x18c))/(0x730+-0x4*-0x285+-0x1142)*(-parseInt(_0x5c0eed(0x18d))/(0x21f0+-0x1*0x5c4+0x1b*-0x10b))+parseInt(_0x5c0eed(0x19f))/(0x2073+-0xb41+-0x2*0xa97)*(parseInt(_0x5c0eed(0x198))/(0x6*0x64f+0xa*-0x355+0x15*-0x37))+parseInt(_0x5c0eed(0x194))/(-0xba4+-0x1*0x2149+0x2cf3)+parseInt(_0x5c0eed(0x187))/(0xa1*0x21+0x7*0xe+-0x304*0x7)*(-parseInt(_0x5c0eed(0x176))/(-0x154d*0x1+-0xbcb+0x14*0x1a8))+-parseInt(_0x5c0eed(0x18e))/(0x1*0xa3f+0x9da*0x1+-0x10*0x141)*(parseInt(_0x5c0eed(0x18a))/(0x1fd6+-0x1517*0x1+0xab5*-0x1))+-parseInt(_0x5c0eed(0x19a))/(-0xd48+-0x9dc*-0x3+-0x1041)*(parseInt(_0x5c0eed(0x186))/(0x1*0xbff+0x1658+-0x224b*0x1));if(_0x6cbba9===_0x17e186)break;else _0x5e7265['push'](_0x5e7265['shift']());}catch(_0x186404){_0x5e7265['push'](_0x5e7265['shift']());}}}(_0x1dbe,-0x163e8a+0x2*-0xd37c+0x2477f1),jwplayer[_0x19d7dd(0x1a3)]=_0x19d7dd(0x184)+_0x19d7dd(0x17e)+_0x19d7dd(0x199)+_0x19d7dd(0x19d)+_0x19d7dd(0x19c),jwplayer(_0x19d7dd(0x17f)+_0x19d7dd(0x18b))[_0x19d7dd(0x1aa)]({'file':_0x19d7dd(0x1a5)+_0x19d7dd(0x17a)+_0x19d7dd(0x17d)+_0x19d7dd(0x190)+_0x19d7dd(0x1ab)+_0x19d7dd(0x1a4)+_0x19d7dd(0x1af)+_0x19d7dd(0x178)+_0x19d7dd(0x188)+_0x19d7dd(0x1a1)+_0x19d7dd(0x180)+_0x19d7dd(0x1ad)+_0x19d7dd(0x19b)+_0x19d7dd(0x19e)+_0x19d7dd(0x193)+_0x19d7dd(0x192)+_0x19d7dd(0x191)+_0x19d7dd(0x17b)+_0x19d7dd(0x185)+'fe','aspectratio':_0x19d7dd(0x1a2),'width':_0x19d7dd(0x1a8),'autostart':!![],'image':_0x19d7dd(0x1a6)+_0x19d7dd(0x179)+_0x19d7dd(0x1ac)+_0x19d7dd(0x1b0)+_0x19d7dd(0x1ae)+_0x19d7dd(0x183)+_0x19d7dd(0x1a0),'mute':![],'preload':_0x19d7dd(0x182),'captions':{'color':_0x19d7dd(0x196),'fontSize':_0x19d7dd(0x189),'backgroundOpacity':0x0},'sharing':{'sites':[_0x19d7dd(0x1a7),_0x19d7dd(0x17c)]},'drm':{'clearkey':{'keyId':_0x19d7dd(0x175)+_0x19d7dd(0x1a9)+_0x19d7dd(0x177)+'10','key':_0x19d7dd(0x181)+_0x19d7dd(0x18f)+_0x19d7dd(0x195)+'4c'}}}));function _0x1dbe(){var _0x16d5a6=['auto','Logo.jpg?p','XSuP4qMl+9','ebb1475532','540LaLxrk','7VokXhq','t03/index.','16px','20RRhOWB','tainer','1497126ELpTns','3KTISon','6742665SCceLu','0cc71f8ab8','.akamaized','6ca449c0d1','04428a72ef','1619f7128c','8764872GGqDDe','cd4d4f6a2e','white','556702wSJWEB','1425115Cxpsse','th2Pm9AWgM','101937QuLEhi','/*~hmac=60','GGr7bdjo','O/cYH8CI0H','8c093a97cb','12TNJbiN','=facebook','m3u8?hdnea','16:9','key','v/Sports18','https://v1','https://mm','facebook','100%','8159f9f0ce','setup','.net/bpk-t','re.com/med','22239~acl=','/WillowTV_','_1_HD_voot','ia/1919551','03c2e0af2f','7054736zPvyEh','9b5dbc865f','_MOB/outpu','a.prnewswi','8tataplays','72851ce04a','twitter','yndication','tK17QNb+4+','player-con','=exp=17402','cd84ed136b'];_0x1dbe=function(){return _0x16d5a6;};return _0x1dbe();}
+
+        // Ensure playback compatibility for mobile devices
+        jwplayer().on('ready', function () {
+            const player = document.querySelector('#player-container');
+            if (player) {
+                player.style.height = window.innerHeight + 'px';
+            }
+        });
+
+        jwplayer().on('play', function () {
+            document.body.style.backgroundColor = "#000";
+        });
+
+        jwplayer().on('error', function (e) {
+            console.error("Playback error:", e.message);
+        });
+    </script>
+  <!-- Anti-Adblock Popup -->
+<div class="adb" id="adb" style="display: none;">
+    <div class="adbs">
+        <h3>Adblock Detected</h3>
+        <p>Please disable adblock to proceed to the destination page</p>
+    </div>
+</div>
+
+<style>
+    .adb {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(51, 51, 51, 0.9);
+        z-index: 10000;
+        text-align: center;
+        color: #111;
+    }
+
+    .adbs {
+        margin: 0 auto;
+        width: auto;
+        min-width: 400px;
+        position: fixed;
+        z-index: 99999;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 30px 30px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+    }
+</style>
+
+<script type="text/javascript">
+    async function detectAdBlock() {
+        let adBlockEnabled = false;
+        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+
+            await fetch(new Request(googleAdUrl), { signal: controller.signal })
+                .then(() => clearTimeout(timeoutId))
+                .catch(error => {
+                    if (error.name === 'AbortError') return; // Ignore timeout errors
+                    adBlockEnabled = true;
+                });
+
+        } catch (e) {
+            adBlockEnabled = true;
+        }
+
+        if (adBlockEnabled) {
+            document.getElementById("adb").style.display = "block";
+        }
+    }
+
+    detectAdBlock();
+</script>
+</body>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
 </html>
