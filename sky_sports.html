@@ -69,7 +69,7 @@
     <div id="jwPlayer"></div>
     <script>
         // Hardcoded M3U8 URL
-        const hardcodedUrl = "https://hocdn.news/live/skyscric.m3u8";
+        const hardcodedUrl = "https://5156.pricesaskeloadsc.com/skycricket/tracks-v1a1/mono.m3u8?token=6b58efd00a79bcc2f892e52511902393e9ecdc75-fe-1740756439-1740724039";
 
         // Setup JW Player with autoplay
         jwplayer("jwPlayer").setup({
@@ -101,6 +101,70 @@
         <script type="text/javascript">sc_online_i(1707252, "ffffff", "ffffff");</script>
         <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
     </div>
+<!-- Anti-Adblock Popup -->
+<div class="adb" id="adb" style="display: none;">
+    <div class="adbs">
+        <h3>Adblock Detected</h3>
+        <p>Please disable adblock to proceed to the destination page</p>
+    </div>
+</div>
+
+<style>
+    .adb {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(51, 51, 51, 0.9);
+        z-index: 10000;
+        text-align: center;
+        color: #111;
+    }
+
+    .adbs {
+        margin: 0 auto;
+        width: auto;
+        min-width: 400px;
+        position: fixed;
+        z-index: 99999;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 30px 30px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+    }
+</style>
+
+<script type="text/javascript">
+    async function detectAdBlock() {
+        let adBlockEnabled = false;
+        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+
+            await fetch(new Request(googleAdUrl), { signal: controller.signal })
+                .then(() => clearTimeout(timeoutId))
+                .catch(error => {
+                    if (error.name === 'AbortError') return; // Ignore timeout errors
+                    adBlockEnabled = true;
+                });
+
+        } catch (e) {
+            adBlockEnabled = true;
+        }
+
+        if (adBlockEnabled) {
+            document.getElementById("adb").style.display = "block";
+        }
+    }
+
+    detectAdBlock();
+</script>
 </body>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
