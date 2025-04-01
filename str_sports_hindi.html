@@ -3,93 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>allinone_reborn</title>
+    <title>@allinone_reborn</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #242424, #3b5998);
+            color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            width: 100vw;
-            margin: 0;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
         }
-        .ad-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 0;
-            min-height: 100px;
+
+        .player-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
             overflow: hidden;
-        }
-        .iframe-container {
+            background: #000;
             position: relative;
-            width: 92%;
-            height: 65vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-        iframe {
+
+        .player-container iframe {
+            border-radius: 15px;
             width: 100%;
             height: 100%;
         }
+
+        .ad-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .join-telegram-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .join-telegram-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #008fd6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-telegram-btn:hover {
+            background-color: #006bb3;
+        }
     </style>
 </head>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
-
-    <!-- Top Ad -->
+    
+    <!-- Ad Above Video Player -->
     <div class="ad-container">
-        <div style="width: 728px; height: 90px;">
-            <script type="text/javascript">
-	atOptions = {
-		'key' : '606e9b2600d90b868cc5baa3430c4328',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//eltontry.com/606e9b2600d90b868cc5baa3430c4328/invoke.js"></script>
-        </div>
-    </div>
-
-    <!-- iFrame Section with Logic for Manual Obfuscation -->
-    <div class="iframe-container">
-        <script>
-            function loadIframe() {
-                let iframe = document.createElement("iframe");
-                let iframeSrc = "https://vimeo.com/event/5027375/embed"; // Keep URL visible for manual obfuscation later
-                iframe.src = iframeSrc;
-                iframe.setAttribute("frameborder", "0");
-                iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
-                iframe.setAttribute("allowfullscreen", "");
-                document.querySelector(".iframe-container").appendChild(iframe);
-            }
-            loadIframe(); // Call the function to insert iframe
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
         </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
     </div>
-
-    <!-- Bottom Ad -->
-    <div class="ad-container">
-        <div style="width: 728px; height: 90px;">
-            <script type="text/javascript">
-	atOptions = {
-		'key' : '606e9b2600d90b868cc5baa3430c4328',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//eltontry.com/606e9b2600d90b868cc5baa3430c4328/invoke.js"></script>
+    
+    <!-- Video Player Section -->
+    <div class="player-container">
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe id="contentFrame" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" 
+            frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen="true" scrolling="no" 
+            src="https://vimeo.com/event/5027375/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
         </div>
     </div>
+    
+    <!-- Ad Below Video Player -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
+    
+    <!-- Join Telegram Button -->
+    <div class="join-telegram-container">
+        <button class="join-telegram-btn" onclick="window.open('https://t.me/allinone_reborn', '_blank')">Join Telegram Channel</button>
+    </div>
 
-    <!-- Anti-Adblock Popup -->
+<!-- Anti-Adblock Popup -->
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
@@ -154,7 +172,8 @@
     detectAdBlock();
 </script>
 </body>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
