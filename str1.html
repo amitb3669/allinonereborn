@@ -1,160 +1,45 @@
-<!DOCTYPE html> 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .player-container {
-            max-width: 800px;
-            width: 100%;
-            position: relative;
-        }
-        video {
-            width: 100%;
-            height: auto;
-            background: #000;
-        }
-        .quality-selector {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .ad-container {
-            margin: 20px 0;
-            width: 100%;
-            max-width: 800px;
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-            border: 1px solid #555;
-        }
-        .error-message {
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@allinone_reborn</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      background: #000;
+    }
+  </style>
 </head>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
-    <div class="ad-container" id="adTop">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
-    </div>
 
-    <div class="player-container">
-        <video id="videoPlayer" autoplay muted controls></video>
-        <select id="qualitySelector" class="quality-selector" style="display: none;"></select>
-        <p id="errorMessage" class="error-message" style="display: none;">Error: Unable to play this stream!</p>
-    </div>
+  <video id="video" controls muted playsinline></video>
 
-    <div class="ad-container" id="adBottom">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '701fef7de243c4e8e91e6e6b3a2fea1e',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
-    </div>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const _0x6503d7=_0x4b06;function _0x4b06(_0x2c9557,_0x47abc0){const _0x1174a9=_0x3e7f();return _0x4b06=function(_0x554cc2,_0x4083fc){_0x554cc2=_0x554cc2-(-0x1463+0x7c*-0x28+-0x285b*-0x1);let _0x4b2282=_0x1174a9[_0x554cc2];return _0x4b2282;},_0x4b06(_0x2c9557,_0x47abc0);}(function(_0x43b17a,_0x35c0c8){const _0x17e2c2=_0x4b06,_0x2a58d6=_0x43b17a();while(!![]){try{const _0xed1b3f=parseInt(_0x17e2c2(0xa6))/(0x2259+0xf1*0x1+-0x2349)*(parseInt(_0x17e2c2(0xb2))/(-0x1*0x8c8+-0x1de9+-0x26b3*-0x1))+parseInt(_0x17e2c2(0xa0))/(0x61*0x11+-0x134f+-0x15*-0x9d)+parseInt(_0x17e2c2(0xb9))/(-0x25bf*-0x1+-0x1b*0x3f+0x15a*-0x17)+-parseInt(_0x17e2c2(0xc0))/(0x2*0x66a+-0xecf+-0x200*-0x1)*(-parseInt(_0x17e2c2(0xbe))/(0xbf*-0xb+0x2268+0x1*-0x1a2d))+parseInt(_0x17e2c2(0xaa))/(0xcc9+-0xa9*0x18+0x316)+-parseInt(_0x17e2c2(0xc4))/(-0x1*-0x22fe+0x20e5+-0x43db)+-parseInt(_0x17e2c2(0xd9))/(-0xcc6+0xff*-0x1+-0x1*-0xdce);if(_0xed1b3f===_0x35c0c8)break;else _0x2a58d6['push'](_0x2a58d6['shift']());}catch(_0x3815e9){_0x2a58d6['push'](_0x2a58d6['shift']());}}}(_0x3e7f,-0x1*-0x8822e+0x53d8+-0xa6f6*0x7));function _0x3e7f(){const _0x1bd1d5=['data','er\x20does\x20no','loadedmeta','ById','n/vnd.appl','HtRfT','...','308922FyrSPE','catch','An\x20unrecov','Autoplay\x20e','canPlayTyp','\x20page.','1981fXruxO','startLoad','type','d.\x20Please\x20','3007452ihesUE','HLS\x20stream','ycx.net/me','HLS\x20error:','r.\x20Trying\x20','isSupporte','e.mpegurl','src','10GSYwvg','error','u8x2.cloud','to\x20recover','dia/hls/fi','video','NETWORK_ER','1429272VWKBQw','applicatio','erable\x20err','er...','ZWFaj','6JEAoVq','Network\x20er','1355110KuXpYD','TwvuR','fatal','Events','3524904skpPyC','addEventLi','recoverMed','loadSource','ErrorTypes','Your\x20brows','attachMedi','https://m3','g\x20to\x20recov','t\x20support\x20','UhosQ','MANIFEST_P','getElement','m3u8','destroy','wlNwK','EzCME','rror:','les/1080p.','ing.','ROR','4053222cECRzH','play','MEDIA_ERRO','Media\x20erro','ARSED','stener','or\x20occurre','log','ror.\x20Tryin','reload\x20the','Makml','ERROR','jmLiT','iaError'];_0x3e7f=function(){return _0x1bd1d5;};return _0x3e7f();}const video=document[_0x6503d7(0xd0)+_0x6503d7(0x9c)](_0x6503d7(0xb7)),videoSrc=_0x6503d7(0xcb)+_0x6503d7(0xb4)+_0x6503d7(0xac)+_0x6503d7(0xb6)+_0x6503d7(0xd6)+_0x6503d7(0xd1);function setupHLS(){const _0x5e32d3=_0x6503d7,_0x2ee0b5={'TwvuR':_0x5e32d3(0xad),'HtRfT':_0x5e32d3(0xbf)+_0x5e32d3(0xe1)+_0x5e32d3(0xcc)+_0x5e32d3(0xbc),'EzCME':_0x5e32d3(0xdc)+_0x5e32d3(0xae)+_0x5e32d3(0xb5)+_0x5e32d3(0x9f),'ZWFaj':function(_0x225c7c,_0x6c746a){return _0x225c7c(_0x6c746a);},'jmLiT':_0x5e32d3(0xa2)+_0x5e32d3(0xbb)+_0x5e32d3(0xdf)+_0x5e32d3(0xa9)+_0x5e32d3(0xe2)+_0x5e32d3(0xa5),'UhosQ':_0x5e32d3(0xba)+_0x5e32d3(0x9d)+_0x5e32d3(0xb0),'wlNwK':_0x5e32d3(0x9b)+_0x5e32d3(0x99),'Makml':_0x5e32d3(0xc9)+_0x5e32d3(0x9a)+_0x5e32d3(0xcd)+_0x5e32d3(0xab)+_0x5e32d3(0xd7)};if(Hls[_0x5e32d3(0xaf)+'d']()){const _0x16bec8=new Hls({'maxBufferLength':0x1e,'liveSyncDurationCount':0x3,'enableWorker':!![],'lowLatencyMode':!![]});_0x16bec8[_0x5e32d3(0xc7)](videoSrc),_0x16bec8[_0x5e32d3(0xca)+'a'](video),_0x16bec8['on'](Hls[_0x5e32d3(0xc3)][_0x5e32d3(0xcf)+_0x5e32d3(0xdd)],function(){const _0x2e0a01=_0x5e32d3;video[_0x2e0a01(0xda)]()[_0x2e0a01(0xa1)](_0x336a2a=>console[_0x2e0a01(0xb3)](_0x2e0a01(0xa3)+_0x2e0a01(0xd5),_0x336a2a));}),_0x16bec8['on'](Hls[_0x5e32d3(0xc3)][_0x5e32d3(0xe4)],function(_0x5773b6,_0x5898c5){const _0x2b3509=_0x5e32d3;console[_0x2b3509(0xb3)](_0x2ee0b5[_0x2b3509(0xc1)],_0x5898c5);if(_0x5898c5[_0x2b3509(0xc2)])switch(_0x5898c5[_0x2b3509(0xa8)]){case Hls[_0x2b3509(0xc8)][_0x2b3509(0xb8)+_0x2b3509(0xd8)]:console[_0x2b3509(0xe0)](_0x2ee0b5[_0x2b3509(0x9e)]),_0x16bec8[_0x2b3509(0xa7)]();break;case Hls[_0x2b3509(0xc8)][_0x2b3509(0xdb)+'R']:console[_0x2b3509(0xe0)](_0x2ee0b5[_0x2b3509(0xd4)]),_0x16bec8[_0x2b3509(0xc6)+_0x2b3509(0x98)]();break;default:_0x16bec8[_0x2b3509(0xd2)](),_0x2ee0b5[_0x2b3509(0xbd)](alert,_0x2ee0b5[_0x2b3509(0xe5)]);break;}});}else video[_0x5e32d3(0xa4)+'e'](_0x2ee0b5[_0x5e32d3(0xce)])?(video[_0x5e32d3(0xb1)]=videoSrc,video[_0x5e32d3(0xc5)+_0x5e32d3(0xde)](_0x2ee0b5[_0x5e32d3(0xd3)],()=>{const _0x397ced=_0x5e32d3;video[_0x397ced(0xda)]()[_0x397ced(0xa1)](_0x5efb7e=>console[_0x397ced(0xb3)](_0x397ced(0xa3)+_0x397ced(0xd5),_0x5efb7e));})):_0x2ee0b5[_0x5e32d3(0xbd)](alert,_0x2ee0b5[_0x5e32d3(0xe3)]);}setupHLS();
+  </script>
+<script>
+// alert('Join Our Telegram For Latest update')
+         if (confirm("Join Our Telegram Channel @allinone_reborn") == true) {
+         window.open("https://t.me/allinone_reborn');
+     }
+</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
-    <script>
-        const video = document.getElementById('videoPlayer');
-        const errorMessage = document.getElementById('errorMessage');
-        const qualitySelector = document.getElementById('qualitySelector');
-
-        const streamUrl = "https://starsporthindi.pages.dev/index.m3u8";
-
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(streamUrl);
-            hls.attachMedia(video);
-
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                const levels = hls.levels;
-
-                // Add "Auto" option
-                qualitySelector.style.display = 'inline-block';
-                const autoOption = document.createElement('option');
-                autoOption.value = -1;
-                autoOption.text = 'Auto';
-                qualitySelector.appendChild(autoOption);
-
-                // Add individual quality levels
-                levels.forEach((level, index) => {
-                    const option = document.createElement('option');
-                    option.value = index;
-                    option.text = level.height
-                        ? `${level.height}p`
-                        : `Level ${index + 1}`;
-                    qualitySelector.appendChild(option);
-                });
-
-                // Listen for quality changes
-                qualitySelector.addEventListener('change', (event) => {
-                    const selectedLevel = parseInt(event.target.value, 10);
-                    hls.currentLevel = selectedLevel; // Change quality level (-1 for auto)
-                });
-
-                // Set initial mode to Auto
-                hls.currentLevel = -1;
-            });
-
-            hls.on(Hls.Events.ERROR, (event, data) => {
-                if (data.fatal) {
-                    errorMessage.style.display = 'block';
-                }
-            });
-
-            hls.on(Hls.Events.MEDIA_ATTACHED, () => {
-                video.play().catch(() => {
-                    console.warn('Autoplay failed. User interaction required.');
-                });
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = streamUrl;
-
-            video.play().catch(() => {
-                console.warn('Autoplay failed. User interaction required.');
-            });
-
-            video.addEventListener('error', () => {
-                errorMessage.style.display = 'block';
-            });
-        } else {
-            errorMessage.textContent = 'Error: HLS is not supported in this browser.';
-            errorMessage.style.display = 'block';
-        }
-    </script>
 </body>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
