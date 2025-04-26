@@ -1,163 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="" rel="icon" type="image/x-icon" />
-    <title> Live</title>
-    <style>
-        .video-js {
-            width: 100%;
-            height: 100%;
-        }
-        body {
-            text-align: center;
-            margin: 0;
-        }
-        #videojs {
-            width: 100%;
-            height: 100%;
-        }
-        .streaming-dimensions {
-            width: 100% !important;
-            height: 100% !important;
-        }
-        #container {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: #8a0000;
-            color: #fff;
-            overflow: hidden;
-        }
-        #iframe, #jwPlayer {
-            height: 100vh !important;
-            padding: 0;
-            margin: 0;
-        }
-        body {
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-        #container {
-            position: absolute;
-            text-align: center;
-        }
-        video {
-            outline: 0;
-        }
-        #text {
-            position: fixed;
-            border: 0;
-            left: 0;
-            width: 100%;
-            color: #fff;
-            bottom: 50px;
-            text-align: center;
-            font-family: tahoma;
-            font-size: 20px;
-            z-index: 9999;
-        }
-    </style>
-    <script src="https://yosintv3.github.io/player/SAHhwvZq.js"></script>
-    <script src="https://yosintv3.github.io/player/jwplayer.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://encrypted-tbn0static.com/images?q=tbn:ANd9GcQq-VwWgAPYQ70k1R60meu_P-lN85uhvxb1Hg&usqp=CAU">
+  <meta property="og:title" content="LIVE Streaming by @allinone_reborn | PERMANENT LIVE">
+  <meta property="og:description" content="Official World Cup website - live matches, scores, news, highlights, commentary, rankings, videos and fixtures from the International Cricket Council.">
+  <meta property="og:url" content="https://tvxd.digitaltrend.in/streaming7.html">
+  <title>allinone</title>
+
+  <style>
+    .animate {
+      transition: all 0.1s;
+      -webkit-transition: all 0.1s;
+    }
+
+    .action-button {
+      position: relative;
+      padding: 5px 10px;
+      margin: 0px 10px 10px 0px;
+      float: center;
+      border-radius: 8px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 20px;
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    .blue {
+      background-color: #3498DB;
+      border-bottom: 5px solid #2980B9;
+      text-shadow: 0px -2px #2980B9;
+    }
+
+    .green {
+      background-color: #82BF56;
+      border-bottom: 5px solid #669644;
+      text-shadow: 0px -2px #669644;
+    }
+
+    .yellow {
+      background-color: #F2CF66;
+      border-bottom: 5px solid #D1B358;
+      text-shadow: 0px -2px #D1B358;
+    }
+
+    .action-button:active {
+      transform: translate(0px, 5px);
+      -webkit-transform: translate(0px, 5px);
+      border-bottom: 1px solid;
+    }
+
+    .modal-header {
+      border-top: 1px solid white;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      text-align: left;
+      font-size: 23px;
+      color: white;
+      background-color: #261f31;
+      border-bottom: 0px;
+    }
+
+    .playe {
+      margin-top: 10px;
+    }
+  </style>
 </head>
-    <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
-<body onload="init()">
-    <div id="jwPlayer"></div>
-    <script>
-        const _0x58e90b=_0xe14b;(function(_0x16a297,_0x156e73){const _0x4b0c74=_0xe14b,_0x48f9d2=_0x16a297();while(!![]){try{const _0x4b93d8=parseInt(_0x4b0c74(0x100))/(0x2cc*-0x5+0x5d5*0x4+-0x957*0x1)+parseInt(_0x4b0c74(0xfb))/(-0x852+0x6d*0x2f+-0x3*0x3e5)+-parseInt(_0x4b0c74(0x107))/(0x1376+-0x1b9b+0x828)*(-parseInt(_0x4b0c74(0xf9))/(-0x2327+0x2154+0x1d7))+-parseInt(_0x4b0c74(0x108))/(0x1619+0x2c*0x88+0xb5d*-0x4)*(parseInt(_0x4b0c74(0xfd))/(-0x38c*0x1+0x4d9+-0x6d*0x3))+-parseInt(_0x4b0c74(0xfa))/(0x9*-0x17b+-0x240d+-0x1*-0x3167)+parseInt(_0x4b0c74(0x103))/(0x28a+0x29*-0xb9+0x1b1f)+parseInt(_0x4b0c74(0x105))/(0x1e1b*0x1+-0x243*-0x4+-0x271e);if(_0x4b93d8===_0x156e73)break;else _0x48f9d2['push'](_0x48f9d2['shift']());}catch(_0x6ea5bd){_0x48f9d2['push'](_0x48f9d2['shift']());}}}(_0x2a9c,0xe*0xb654+0x83d53+0x2*-0x63611));const hardcodedUrl=_0x58e90b(0x106)+_0x58e90b(0xfe)+_0x58e90b(0x109)+_0x58e90b(0xff)+_0x58e90b(0xfc)+_0x58e90b(0x102)+_0x58e90b(0x101);function _0xe14b(_0x445913,_0x39af1e){const _0x174134=_0x2a9c();return _0xe14b=function(_0x31e7e1,_0x221339){_0x31e7e1=_0x31e7e1-(-0x266d+0x773+0x1ff3);let _0x1d9b2d=_0x174134[_0x31e7e1];return _0x1d9b2d;},_0xe14b(_0x445913,_0x39af1e);}jwplayer(_0x58e90b(0x10b))[_0x58e90b(0x104)]({'file':hardcodedUrl,'width':_0x58e90b(0x10a),'height':_0x58e90b(0x10a),'stretching':_0x58e90b(0x10c),'autostart':!![]});function _0x2a9c(){const _0x2012b6=['9px/slot-1','254196fBlmZq','ndex.m3u8','q5_1080p/i','4545792UPCpLy','setup','1028970WBkDLM','https://1a','650361EoVUKm','1045270rCyGfD','live/t34ch','100%','jwPlayer','uniform','4uAkDjl','5193545UJLWsI','353578zKgolK','31/emz4-gs','6BdZEPM','-1791.com/'];_0x2a9c=function(){return _0x2012b6;};return _0x2a9c();}
-    </script>
+<script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 
-    <!-- Histats.com START (async) -->
-    <script type="text/javascript">
-        var _Hasync = _Hasync || [];
-        _Hasync.push(['Histats.start', '1,4923601,4,0,0,0,00010000']);
-        _Hasync.push(['Histats.fasi', '1']);
-        _Hasync.push(['Histats.track_hits', '']);
-        (function () {
-            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-            hs.src = ('//s10.histats.com/js15_as.js');
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-        })();
-    </script>
-    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4923601&101" alt="free counter" border="0"></a></noscript>
-    <!-- Histats.com END -->
-
-    <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
-        <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
-        <script type="text/javascript">sc_online_i(1707252, "ffffff", "ffffff");</script>
-        <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
+<body>
+  <center>
+    <!-- Ad above the iframe -->
+    <div style="margin-bottom: 10px;">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+          'format': 'iframe',
+          'height': 90,
+          'width': 728,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
     </div>
-<!-- Anti-Adblock Popup -->
-<div class="adb" id="adb" style="display: none;">
-    <div class="adbs">
-        <h3>Adblock Detected</h3>
-        <p>Please disable adblock to proceed to the destination page</p>
+
+    <!-- Video player iframe -->
+    <div class="playe" style="padding:40% 0 0 0; position:relative; width: 80%;
+      box-shadow: 9px 9px 8px #8c8c8c,
+        -29px -29px 58px #ffffff;
+      border-radius: 10px;
+      overflow: hidden;">
+      <iframe id="myrandomiframe" width="100%" height="100%" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>
-</div>
 
-<style>
-    .adb {
-        display: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: rgba(51, 51, 51, 0.9);
-        z-index: 10000;
-        text-align: center;
-        color: #111;
-    }
+    <!-- Ad below the iframe -->
+    <div style="margin-top: 10px;">
+      <script type="text/javascript">
+        atOptions = {
+          'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+          'format': 'iframe',
+          'height': 90,
+          'width': 728,
+          'params': {}
+        };
+      </script>
+      <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+    </div>
 
-    .adbs {
-        margin: 0 auto;
-        width: auto;
-        min-width: 400px;
-        position: fixed;
-        z-index: 99999;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px 30px 30px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-    }
-</style>
+    <p style="margin-top: -30px;">
+      <a href="https://t.me/allinone_reborn" class="action-button animate blue">Join Telegram</a>
+      <a href="https://t.me/allinone_reborn" class="action-button animate green">Join Whatsapp</a>
+    </p>
+  </center>
 
-<script type="text/javascript">
-    async function detectAdBlock() {
-        let adBlockEnabled = false;
-        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
-
-            await fetch(new Request(googleAdUrl), { signal: controller.signal })
-                .then(() => clearTimeout(timeoutId))
-                .catch(error => {
-                    if (error.name === 'AbortError') return; // Ignore timeout errors
-                    adBlockEnabled = true;
-                });
-
-        } catch (e) {
-            adBlockEnabled = true;
-        }
-
-        if (adBlockEnabled) {
-            document.getElementById("adb").style.display = "block";
-        }
-    }
-
-    detectAdBlock();
-</script>
+  <!-- JavaScript -->
+  <script type="text/javascript">
+    const _0x6093ad=_0x139e;function _0x2000(){const _0x1f8835=['etvbd.com/','5015889RnjoYK','254100rfavol','src','https://cr','6drXhYL','ById','3073246vZkKtg','myrandomif','115539nKSNzI','confirm','87345PBPlWc','getElement','rame','8fmKWKw','1105065cpFBGs','alert','ichd.onlin','setAttribu','?play=369','prompt','116FHCTDU','6pZckVu','3879001yBXmei'];_0x2000=function(){return _0x1f8835;};return _0x2000();}function _0x139e(_0x55c293,_0x23c158){const _0x4146e5=_0x2000();return _0x139e=function(_0x3337eb,_0x30101e){_0x3337eb=_0x3337eb-(-0x621+0xe6b+-0x68e);let _0x3d370d=_0x4146e5[_0x3337eb];return _0x3d370d;},_0x139e(_0x55c293,_0x23c158);}(function(_0x3a51d2,_0x4af195){const _0x465120=_0x139e,_0x403a55=_0x3a51d2();while(!![]){try{const _0x51a048=-parseInt(_0x465120(0x1d1))/(-0x1461+-0x578+0x19da)*(-parseInt(_0x465120(0x1cd))/(-0x243e+0xab*-0x2f+-0x1*-0x43a5))+parseInt(_0x465120(0x1bf))/(-0x3ab+0xc2*-0x10+0xfce*0x1)+parseInt(_0x465120(0x1c5))/(0x11*0xea+0x407*0x9+-0x1c9*0x1d)*(parseInt(_0x465120(0x1d3))/(0x22f7+-0x8cb*-0x1+0x2bbd*-0x1))+-parseInt(_0x465120(0x1c6))/(0x1*-0x32b+0x196b+-0x163a)*(parseInt(_0x465120(0x1c7))/(-0x265e+-0x7*-0x33d+0xfba))+parseInt(_0x465120(0x1be))/(0x9f+-0x19ce+0x1937)*(-parseInt(_0x465120(0x1c9))/(-0x18*-0xa6+0x21ec+-0x3173*0x1))+-parseInt(_0x465120(0x1ca))/(-0x1089+-0x6eb+0x2*0xbbf)+parseInt(_0x465120(0x1cf))/(0x2299+-0x15aa+0x2*-0x672);if(_0x51a048===_0x4af195)break;else _0x403a55['push'](_0x403a55['shift']());}catch(_0x2bbbc9){_0x403a55['push'](_0x403a55['shift']());}}}(_0x2000,0x2d*0x21+0x12df*0x5e+-0x1657a),window[_0x6093ad(0x1c0)]=window[_0x6093ad(0x1d2)]=window[_0x6093ad(0x1c4)]=function(){});const iframeSrc=_0x6093ad(0x1cc)+_0x6093ad(0x1c1)+_0x6093ad(0x1c8)+_0x6093ad(0x1c3);document[_0x6093ad(0x1bc)+_0x6093ad(0x1ce)](_0x6093ad(0x1d0)+_0x6093ad(0x1bd))[_0x6093ad(0x1c2)+'te'](_0x6093ad(0x1cb),iframeSrc);
+  </script>
 </body>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
