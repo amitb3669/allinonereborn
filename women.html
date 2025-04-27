@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@allinone_reborn</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 10px;
+    }
+    .ad-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      background: #000;
+    }
+  </style>
+</head>
+  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+<body>
+
+  <!-- Top Ad -->
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '244d55edeba6016826a285214b7c7c77',
+        'format': 'iframe',
+        'height': 60,
+        'width': 468,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
+  </div>
+
+  <!-- Video Player -->
+  <video id="video" controls muted playsinline></video>
+
+  <!-- Bottom Ad -->
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key': '244d55edeba6016826a285214b7c7c77',
+        'format': 'iframe',
+        'height': 60,
+        'width': 468,
+        'params': {}
+      };
+    </script>
+    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
+  </div>
+
+  <!-- HLS Player Script -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const video = document.getElementById('video');
+    const videoSrc = 'https://dai.google.com/linear/hls/event/6glC7lbuTD6EgVC-HHLTbg/master.m3u8';
+
+    function setupHLS() {
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          maxBufferLength: 30,
+          liveSyncDurationCount: 3,
+          enableWorker: true,
+          lowLatencyMode: true
+        });
+
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+          video.controls = true; // Force controls to show
+          video.play().catch(err => console.error('Autoplay error:', err));
+        });
+
+        hls.on(Hls.Events.ERROR, function (event, data) {
+          console.error('HLS error:', data);
+          if (data.fatal) {
+            switch (data.type) {
+              case Hls.ErrorTypes.NETWORK_ERROR:
+                console.log("Network error. Trying to recover...");
+                hls.startLoad();
+                break;
+              case Hls.ErrorTypes.MEDIA_ERROR:
+                console.log("Media error. Trying to recover...");
+                hls.recoverMediaError();
+                break;
+              default:
+                hls.destroy();
+                alert("An unrecoverable error occurred. Please reload the page.");
+                break;
+            }
+          }
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', () => {
+          video.controls = true; // Force controls to show
+          video.play().catch(err => console.error('Autoplay error:', err));
+        });
+      } else {
+        alert("Your browser does not support HLS streaming.");
+      }
+    }
+
+    setupHLS();
+  </script>
+
+  <!-- Telegram Redirect -->
+  <script>
+    if (confirm("Join Our Telegram Channel @allinone_reborn") == true) {
+      window.open("https://t.me/allinone_reborn");
+    }
+  </script>
+
+  <!-- Disable DevTools -->
+  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
+
+  <!-- Anti-Adblock Popup -->
+  <div class="adb" id="adb" style="display: none;">
+      <div class="adbs">
+          <h3>Adblock Detected</h3>
+          <p>Please disable adblock to proceed to the destination page</p>
+      </div>
+  </div>
+
+  <style>
+      .adb {
+          display: none;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background: rgba(51, 51, 51, 0.9);
+          z-index: 10000;
+          text-align: center;
+          color: #111;
+      }
+
+      .adbs {
+          margin: 0 auto;
+          width: auto;
+          min-width: 400px;
+          position: fixed;
+          z-index: 99999;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 20px 30px 30px;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 12px;
+      }
+  </style>
+
+  <script type="text/javascript">
+      async function detectAdBlock() {
+          let adBlockEnabled = false;
+          const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+          try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+
+              await fetch(new Request(googleAdUrl), { signal: controller.signal })
+                  .then(() => clearTimeout(timeoutId))
+                  .catch(error => {
+                      if (error.name === 'AbortError') return; // Ignore timeout errors
+                      adBlockEnabled = true;
+                  });
+
+          } catch (e) {
+              adBlockEnabled = true;
+          }
+
+          if (adBlockEnabled) {
+              document.getElementById("adb").style.display = "block";
+          }
+      }
+
+      detectAdBlock();
+  </script>
+
+</body>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+</html>
