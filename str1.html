@@ -1,150 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@allinone_reborn</title>
+  <meta charset="UTF-8">
+  <title>Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body {
-      margin: 0;
-      background: #000;
+      background-color: #121212;
+      color: white;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
-      gap: 10px;
-    }
-    .ad-container {
-      display: flex;
       justify-content: center;
-      align-items: center;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
+
     video {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      background: #000;
+      margin: 20px 0;
+    }
+
+    .ad {
+      margin: 10px 0;
     }
   </style>
 </head>
-  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
 
-  <!-- Top Ad -->
-  <div class="ad-container">
+  <!-- 🔝 Top Ad -->
+  <div class="ad">
     <script type="text/javascript">
       atOptions = {
-        'key': '244d55edeba6016826a285214b7c7c77',
-        'format': 'iframe',
-        'height': 60,
-        'width': 468,
-        'params': {}
+        'key' : '244d55edeba6016826a285214b7c7c77',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
       };
     </script>
     <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
   </div>
 
-  <!-- Video Player -->
-  <video id="video" controls muted playsinline></video>
+  <h2>Live Stream</h2>
+  <video id="video" controls autoplay muted width="640" height="360"></video>
 
-  <!-- Bottom Ad -->
-  <div class="ad-container">
+  <!-- 🔻 Bottom Ad -->
+  <div class="ad">
     <script type="text/javascript">
       atOptions = {
-        'key': '244d55edeba6016826a285214b7c7c77',
-        'format': 'iframe',
-        'height': 60,
-        'width': 468,
-        'params': {}
+        'key' : '244d55edeba6016826a285214b7c7c77',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
       };
     </script>
     <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
   </div>
 
-  <!-- HLS Player Script -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
-      const _0x5efa3d=_0x3053;(function(_0x1b7c4a,_0x162f23){const _0x37cbe1=_0x3053,_0x58bde5=_0x1b7c4a();while(!![]){try{const _0x263b85=-parseInt(_0x37cbe1(0x23a))/(-0x43*0x52+0x1e59+0x471*-0x2)+-parseInt(_0x37cbe1(0x231))/(-0x14f*-0x16+0x1bbd+-0x3885)*(parseInt(_0x37cbe1(0x211))/(0xd9d+-0x1c*-0x103+-0x29ee*0x1))+-parseInt(_0x37cbe1(0x214))/(-0x376+-0x11b0+-0x6*-0x387)+-parseInt(_0x37cbe1(0x223))/(-0x8aa*0x3+0x1383+0x680)*(parseInt(_0x37cbe1(0x202))/(0x1cf5+-0x3*0x7eb+0xd*-0x66))+-parseInt(_0x37cbe1(0x224))/(-0x137d*0x1+0x85*-0x34+-0x1*-0x2e88)+parseInt(_0x37cbe1(0x215))/(0xd87+0xf79+-0x9*0x338)+parseInt(_0x37cbe1(0x242))/(-0x2*-0x67e+-0x1*-0x3f2+-0x10e5);if(_0x263b85===_0x162f23)break;else _0x58bde5['push'](_0x58bde5['shift']());}catch(_0x418416){_0x58bde5['push'](_0x58bde5['shift']());}}}(_0x5d8c,-0xb6d02+0x13052*0x8+-0xa1075*-0x1));function _0x3053(_0x165499,_0x250c84){const _0xcf469a=_0x5d8c();return _0x3053=function(_0x741ec8,_0x1e4606){_0x741ec8=_0x741ec8-(0x1*-0x1c0c+0x367*-0x9+0x3c87);let _0x391622=_0xcf469a[_0x741ec8];return _0x391622;},_0x3053(_0x165499,_0x250c84);}const video=document[_0x5efa3d(0x1f7)+_0x5efa3d(0x1dd)](_0x5efa3d(0x240)),videoSrc=_0x5efa3d(0x236)+_0x5efa3d(0x239)+_0x5efa3d(0x1ef)+_0x5efa3d(0x225)+_0x5efa3d(0x22f)+_0x5efa3d(0x235)+_0x5efa3d(0x21c)+_0x5efa3d(0x228)+_0x5efa3d(0x1fe)+_0x5efa3d(0x1de)+_0x5efa3d(0x1e3)+_0x5efa3d(0x22c)+_0x5efa3d(0x1fd)+_0x5efa3d(0x22a)+_0x5efa3d(0x20f)+_0x5efa3d(0x207)+_0x5efa3d(0x21a)+_0x5efa3d(0x20b)+_0x5efa3d(0x1ee)+_0x5efa3d(0x204)+_0x5efa3d(0x233)+_0x5efa3d(0x229)+_0x5efa3d(0x208)+_0x5efa3d(0x1f5)+_0x5efa3d(0x1f8)+_0x5efa3d(0x20e)+_0x5efa3d(0x20a)+_0x5efa3d(0x1f2)+_0x5efa3d(0x213)+_0x5efa3d(0x1f0)+_0x5efa3d(0x200)+_0x5efa3d(0x246)+_0x5efa3d(0x23b)+_0x5efa3d(0x217)+_0x5efa3d(0x1e1);function setupHLS(){const _0x791594=_0x5efa3d,_0x2bec3b={'YefyN':_0x791594(0x205),'ldHvt':_0x791594(0x1ec)+_0x791594(0x1fa)+_0x791594(0x227)+_0x791594(0x234),'CTMNg':_0x791594(0x1fb)+_0x791594(0x22b)+_0x791594(0x201)+_0x791594(0x23e),'nIsfm':function(_0x4b40cb,_0x32d82e){return _0x4b40cb(_0x32d82e);},'TasRT':_0x791594(0x1e2)+_0x791594(0x203)+_0x791594(0x1ed)+_0x791594(0x1e7)+_0x791594(0x210)+_0x791594(0x226),'ivWoW':_0x791594(0x1e4)+_0x791594(0x22e)+_0x791594(0x1dc),'Nqekj':_0x791594(0x23f)+_0x791594(0x248),'HkjeR':function(_0x44089f,_0x48cec5){return _0x44089f(_0x48cec5);},'zmtqj':_0x791594(0x232)+_0x791594(0x1e6)+_0x791594(0x238)+_0x791594(0x206)+_0x791594(0x1f4)};if(Hls[_0x791594(0x1fc)+'d']()){const _0x3c1d65=new Hls({'maxBufferLength':0x1e,'liveSyncDurationCount':0x3,'enableWorker':!![],'lowLatencyMode':!![]});_0x3c1d65[_0x791594(0x23d)](videoSrc),_0x3c1d65[_0x791594(0x241)+'a'](video),_0x3c1d65['on'](Hls[_0x791594(0x1e0)][_0x791594(0x245)+_0x791594(0x1e9)],function(){const _0x2eb25a=_0x791594;video[_0x2eb25a(0x222)]=!![],video[_0x2eb25a(0x209)]()[_0x2eb25a(0x1eb)](_0x27de32=>console[_0x2eb25a(0x1f3)](_0x2eb25a(0x237)+_0x2eb25a(0x21e),_0x27de32));}),_0x3c1d65['on'](Hls[_0x791594(0x1e0)][_0x791594(0x212)],function(_0x37054c,_0x42a549){const _0x116605=_0x791594;console[_0x116605(0x1f3)](_0x2bec3b[_0x116605(0x230)],_0x42a549);if(_0x42a549[_0x116605(0x243)])switch(_0x42a549[_0x116605(0x216)]){case Hls[_0x116605(0x23c)][_0x116605(0x22d)+_0x116605(0x1df)]:console[_0x116605(0x1f6)](_0x2bec3b[_0x116605(0x20d)]),_0x3c1d65[_0x116605(0x1e5)]();break;case Hls[_0x116605(0x23c)][_0x116605(0x244)+'R']:console[_0x116605(0x1f6)](_0x2bec3b[_0x116605(0x1ff)]),_0x3c1d65[_0x116605(0x247)+_0x116605(0x1ea)]();break;default:_0x3c1d65[_0x116605(0x21f)](),_0x2bec3b[_0x116605(0x21d)](alert,_0x2bec3b[_0x116605(0x220)]);break;}});}else video[_0x791594(0x1f1)+'e'](_0x2bec3b[_0x791594(0x1f9)])?(video[_0x791594(0x218)]=videoSrc,video[_0x791594(0x1e8)+_0x791594(0x221)](_0x2bec3b[_0x791594(0x21b)],()=>{const _0xc8b66d=_0x791594;video[_0xc8b66d(0x222)]=!![],video[_0xc8b66d(0x209)]()[_0xc8b66d(0x1eb)](_0xe472c=>console[_0xc8b66d(0x1f3)](_0xc8b66d(0x237)+_0xc8b66d(0x21e),_0xe472c));})):_0x2bec3b[_0x791594(0x20c)](alert,_0x2bec3b[_0x791594(0x219)]);}setupHLS();function _0x5d8c(){const _0x45928b=['141tGJmWZ','ERROR','392df44e9e','4249456yOZCei','3895320kEoKgg','type','e12b7d14fe','src','zmtqj','1f9e882252','Nqekj','2e4cddbe54','nIsfm','rror:','destroy','TasRT','stener','controls','779325sxxurt','2032338FuGjJJ','25/ps_ipl-','\x20page.','g\x20to\x20recov','4b837a123e','1cc1530656','710bea3861','r.\x20Trying\x20','519c42249e','NETWORK_ER','n/vnd.appl','liv.m3u8?p','YefyN','8458gJTOzK','Your\x20brows','1368241591','er...','splaylink=','https://ps','Autoplay\x20e','t\x20support\x20','tvplaylive','825496EPQWLQ','83bf9a42eb','ErrorTypes','loadSource','...','loadedmeta','video','attachMedi','23219334TuTjxB','fatal','MEDIA_ERRO','MANIFEST_P','e757f817cf','recoverMed','data','e.mpegurl','ById','6e9a68dfaf','ROR','Events','28243520','An\x20unrecov','5f676928fa','applicatio','startLoad','er\x20does\x20no','d.\x20Please\x20','addEventLi','ARSED','iaError','catch','Network\x20er','or\x20occurre','ab194762df','.online/20','8ca92b062d','canPlayTyp','b4cd79c31d','error','ing.','e26f731854','log','getElement','bb4b755b62','ivWoW','ror.\x20Tryin','Media\x20erro','isSupporte','36ae6240d6','132635f5e6','CTMNg','49c56cdbd7','to\x20recover','6lKlJnF','erable\x20err','d1ce4f9611','HLS\x20error:','HLS\x20stream','6d27954b76','134c2b37ef','play','653962bdbc','8f50cd05ff','HkjeR','ldHvt','6fa7468bdb','9d4fc81857','reload\x20the'];_0x5d8c=function(){return _0x45928b;};return _0x5d8c();}
-  </script>
+    const video = document.getElementById('video');
+    const streamUrl = 'https://allinonereborn.com/live/hls_98866/stream_98866.m3u8';
 
-  <!-- Telegram Redirect -->
-  <script>
-    if (confirm("Join Our Telegram Channel @allinone_reborn") == true) {
-      window.open("https://t.me/allinone_reborn");
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(streamUrl);
+      hls.attachMedia(video);
+      video.play(); // force play after attach
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamUrl;
+      video.play(); // force play for native support
+    } else {
+      alert('Your browser does not support HLS playback.');
     }
   </script>
 
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
-
-  <!-- Anti-Adblock Popup -->
-  <div class="adb" id="adb" style="display: none;">
-      <div class="adbs">
-          <h3>Adblock Detected</h3>
-          <p>Please disable adblock to proceed to the destination page</p>
-      </div>
-  </div>
-
-  <style>
-      .adb {
-          display: none;
-          position: fixed;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
-          background: rgba(51, 51, 51, 0.9);
-          z-index: 10000;
-          text-align: center;
-          color: #111;
-      }
-
-      .adbs {
-          margin: 0 auto;
-          width: auto;
-          min-width: 400px;
-          position: fixed;
-          z-index: 99999;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          padding: 20px 30px 30px;
-          background: rgba(255, 255, 255, 0.9);
-          border-radius: 12px;
-      }
-  </style>
-
-  <script type="text/javascript">
-      async function detectAdBlock() {
-          let adBlockEnabled = false;
-          const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-
-          try {
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
-
-              await fetch(new Request(googleAdUrl), { signal: controller.signal })
-                  .then(() => clearTimeout(timeoutId))
-                  .catch(error => {
-                      if (error.name === 'AbortError') return; // Ignore timeout errors
-                      adBlockEnabled = true;
-                  });
-
-          } catch (e) {
-              adBlockEnabled = true;
-          }
-
-          if (adBlockEnabled) {
-              document.getElementById("adb").style.display = "block";
-          }
-      }
-
-      detectAdBlock();
-  </script>
-
 </body>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
