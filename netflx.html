@@ -40,6 +40,96 @@
 <!-- Custom Telegram button overlay -->
 <a class="tg-button" href="https://t.me/allinone_reborn" target="_blank">Join Telegram</a>
 
+    <!-- Anti-Adblock Popup -->
+<div class="adb" id="adb" style="display: none;">
+    <div class="adbs">
+        <h3>Adblock Detected</h3>
+        <p>Please disable your adblocker to continue browsing.</p>
+    </div>
+</div>
+
+<style>
+    .adb {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 99999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+    }
+
+    .adbs {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    .adbs h3 {
+        margin-bottom: 15px;
+        font-size: 24px;
+        color: #d00;
+    }
+
+    .adbs p {
+        font-size: 16px;
+        color: #333;
+    }
+</style>
+
+<script>
+function showAdblockPopup() {
+    document.getElementById('adb').style.display = 'flex';
+}
+
+function baitElementCheck() {
+    return new Promise((resolve) => {
+        const bait = document.createElement('div');
+        bait.className = 'adsbox ad-banner';
+        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+        document.body.appendChild(bait);
+
+        setTimeout(() => {
+            const blocked = window.getComputedStyle(bait).display === 'none' || bait.offsetHeight === 0;
+            bait.remove();
+            resolve(blocked);
+        }, 100); // Wait briefly to give adblocker time to act
+    });
+}
+
+function googleAdsScriptCheck() {
+    return new Promise((resolve) => {
+        const testScript = document.createElement('script');
+        testScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+        testScript.async = true;
+        testScript.type = 'text/javascript';
+
+        // If adblocker blocks it, onerror will trigger
+        testScript.onerror = () => resolve(true);
+        testScript.onload = () => resolve(false);
+
+        document.head.appendChild(testScript);
+    });
+}
+
+window.addEventListener('load', async () => {
+    const baitBlocked = await baitElementCheck();
+    const scriptBlocked = await googleAdsScriptCheck();
+
+    if (baitBlocked || scriptBlocked) {
+        showAdblockPopup();
+    }
+});
+</script>
+
 </body>
 <script type='text/javascript' src='//eltontry.com/63/88/ac/6388ace5c2a702a7b58f724683244363.js'></script>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
