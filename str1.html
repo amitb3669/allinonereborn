@@ -1,150 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@allinone_reborn</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      gap: 10px;
-    }
-    .ad-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    video {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      background: #000;
-    }
-  </style>
+  <title>HLS Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
-  <script type='text/javascript' src='//eltontry.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
 <body>
 
-  <!-- Top Ad -->
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key': '244d55edeba6016826a285214b7c7c77',
-        'format': 'iframe',
-        'height': 60,
-        'width': 468,
-        'params': {}
-      };
-    </script>
-    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
-  </div>
+<video id="video" controls autoplay width="640" height="360"></video>
 
-  <!-- Video Player -->
-  <video id="video" controls muted playsinline></video>
+<script>
+  var video = document.getElementById('video');
+  var videoSrc = 'https://treating-ro-deemed-disabilities.trycloudflare.com/check.php';
 
-  <!-- Bottom Ad -->
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key': '244d55edeba6016826a285214b7c7c77',
-        'format': 'iframe',
-        'height': 60,
-        'width': 468,
-        'params': {}
-      };
-    </script>
-    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
-  </div>
-
-  <!-- HLS Player Script -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    const _0x5d9c7f=_0x325a;(function(_0x3913ee,_0x6b7d0d){const _0x3eec62=_0x325a,_0x22a818=_0x3913ee();while(!![]){try{const _0x3cd8a0=-parseInt(_0x3eec62(0x153))/(-0xc57*0x1+0x1269*-0x1+-0x1ec1*-0x1)+-parseInt(_0x3eec62(0x127))/(0x248+-0x1329+0x10e3)+-parseInt(_0x3eec62(0x15b))/(-0x182+0xf69+0xe*-0xfe)*(parseInt(_0x3eec62(0x12d))/(0x1e11+-0x181c+0x9*-0xa9))+-parseInt(_0x3eec62(0x138))/(0x9*0x36d+0x5+-0x1ed5)+-parseInt(_0x3eec62(0x160))/(-0x396+-0x1*-0x243+-0x45*-0x5)*(-parseInt(_0x3eec62(0x14a))/(-0x1*0x14b+0x9a9+0x1ab*-0x5))+-parseInt(_0x3eec62(0x128))/(-0x13e8+-0xed2*-0x1+-0x2*-0x28f)*(-parseInt(_0x3eec62(0x123))/(-0x1*-0x4ae+-0x183b+0x1396))+parseInt(_0x3eec62(0x14f))/(0xb*-0x25d+0x1cff+-0x2f6)*(parseInt(_0x3eec62(0x14e))/(0x102*0x15+0x176e+-0x2c8d));if(_0x3cd8a0===_0x6b7d0d)break;else _0x22a818['push'](_0x22a818['shift']());}catch(_0x1596ae){_0x22a818['push'](_0x22a818['shift']());}}}(_0x4af9,-0x110990+0x11679c+0x93bd1));const video=document[_0x5d9c7f(0x164)+_0x5d9c7f(0x143)](_0x5d9c7f(0x133)),videoSrc=_0x5d9c7f(0x154)+_0x5d9c7f(0x132)+_0x5d9c7f(0x148)+_0x5d9c7f(0x13b)+_0x5d9c7f(0x137);function setupHLS(){const _0x30e563=_0x5d9c7f,_0x197a4c={'gfbYF':_0x30e563(0x115),'DGxTY':_0x30e563(0x12b)+_0x30e563(0x159)+_0x30e563(0x125)+_0x30e563(0x158),'jTiNB':_0x30e563(0x13d)+_0x30e563(0x11d)+_0x30e563(0x130)+_0x30e563(0x126),'ioOmb':function(_0x48bd45,_0x5c7fe3){return _0x48bd45(_0x5c7fe3);},'ccwgC':_0x30e563(0x163)+_0x30e563(0x121)+_0x30e563(0x12a)+_0x30e563(0x12f)+_0x30e563(0x161)+_0x30e563(0x129),'smCPL':_0x30e563(0x144)+_0x30e563(0x11f)+_0x30e563(0x13a),'ysxzm':_0x30e563(0x15f)+_0x30e563(0x135),'VtnKF':_0x30e563(0x15e)+_0x30e563(0x11c)+_0x30e563(0x131)+_0x30e563(0x157)+_0x30e563(0x146)};if(Hls[_0x30e563(0x151)+'d']()){const _0x186901=new Hls({'maxBufferLength':0x1e,'liveSyncDurationCount':0x3,'enableWorker':!![],'lowLatencyMode':!![]});_0x186901[_0x30e563(0x13c)](videoSrc),_0x186901[_0x30e563(0x117)+'a'](video),_0x186901['on'](Hls[_0x30e563(0x15d)][_0x30e563(0x13e)+_0x30e563(0x150)],function(){const _0x6cec0=_0x30e563;video[_0x6cec0(0x149)]=!![],video[_0x6cec0(0x12e)]()[_0x6cec0(0x141)](_0x1d949f=>console[_0x6cec0(0x156)](_0x6cec0(0x11e)+_0x6cec0(0x147),_0x1d949f));}),_0x186901['on'](Hls[_0x30e563(0x15d)][_0x30e563(0x118)],function(_0x47b40a,_0x5f3020){const _0xede4bd=_0x30e563;console[_0xede4bd(0x156)](_0x197a4c[_0xede4bd(0x145)],_0x5f3020);if(_0x5f3020[_0xede4bd(0x12c)])switch(_0x5f3020[_0xede4bd(0x14d)]){case Hls[_0xede4bd(0x120)][_0xede4bd(0x13f)+_0xede4bd(0x152)]:console[_0xede4bd(0x15c)](_0x197a4c[_0xede4bd(0x14b)]),_0x186901[_0xede4bd(0x14c)]();break;case Hls[_0xede4bd(0x120)][_0xede4bd(0x142)+'R']:console[_0xede4bd(0x15c)](_0x197a4c[_0xede4bd(0x116)]),_0x186901[_0xede4bd(0x124)+_0xede4bd(0x162)]();break;default:_0x186901[_0xede4bd(0x136)](),_0x197a4c[_0xede4bd(0x122)](alert,_0x197a4c[_0xede4bd(0x139)]);break;}});}else video[_0x30e563(0x140)+'e'](_0x197a4c[_0x30e563(0x15a)])?(video[_0x30e563(0x119)]=videoSrc,video[_0x30e563(0x11a)+_0x30e563(0x155)](_0x197a4c[_0x30e563(0x11b)],()=>{const _0x15a257=_0x30e563;video[_0x15a257(0x149)]=!![],video[_0x15a257(0x12e)]()[_0x15a257(0x141)](_0x815a3a=>console[_0x15a257(0x156)](_0x15a257(0x11e)+_0x15a257(0x147),_0x815a3a));})):_0x197a4c[_0x30e563(0x122)](alert,_0x197a4c[_0x30e563(0x134)]);}function _0x325a(_0x5f06f6,_0x2d8af1){const _0x2a236c=_0x4af9();return _0x325a=function(_0x3a2bdb,_0x5e78de){_0x3a2bdb=_0x3a2bdb-(0x2*0xd41+-0x7+-0x1966);let _0x255b98=_0x2a236c[_0x3a2bdb];return _0x255b98;},_0x325a(_0x5f06f6,_0x2d8af1);}function _0x4af9(){const _0x4c6c9a=['Autoplay\x20e','n/vnd.appl','ErrorTypes','erable\x20err','ioOmb','325881Nmvoso','recoverMed','g\x20to\x20recov','...','195908JrPZqe','64yRixyE','\x20page.','or\x20occurre','Network\x20er','fatal','4XSRbuv','play','d.\x20Please\x20','to\x20recover','t\x20support\x20','arsportshi','video','VtnKF','data','destroy','x.m3u8','4919685bMuPJh','ccwgC','e.mpegurl','s.dev/inde','loadSource','Media\x20erro','MANIFEST_P','NETWORK_ER','canPlayTyp','catch','MEDIA_ERRO','ById','applicatio','gfbYF','ing.','rror:','ndiii.page','controls','7XPJjxa','DGxTY','startLoad','type','22vNmeNY','11893140XJbuBm','ARSED','isSupporte','ROR','1030092gfzBFz','https://st','stener','error','HLS\x20stream','er...','ror.\x20Tryin','smCPL','170319qGHueT','log','Events','Your\x20brows','loadedmeta','778014VzOEZo','reload\x20the','iaError','An\x20unrecov','getElement','HLS\x20error:','jTiNB','attachMedi','ERROR','src','addEventLi','ysxzm','er\x20does\x20no','r.\x20Trying\x20'];_0x4af9=function(){return _0x4c6c9a;};return _0x4af9();}setupHLS();
-  </script>
-
-  <!-- Telegram Redirect -->
-  <script>
-    if (confirm("Join Our Telegram Channel @allinone_reborn") == true) {
-      window.open("https://t.me/allinone_reborn");
-    }
-  </script>
-
-  <!-- Disable DevTools -->
-  <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
-
-  <!-- Anti-Adblock Popup -->
-  <div class="adb" id="adb" style="display: none;">
-      <div class="adbs">
-          <h3>Adblock Detected</h3>
-          <p>Please disable adblock to proceed to the destination page</p>
-      </div>
-  </div>
-
-  <style>
-      .adb {
-          display: none;
-          position: fixed;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
-          background: rgba(51, 51, 51, 0.9);
-          z-index: 10000;
-          text-align: center;
-          color: #111;
-      }
-
-      .adbs {
-          margin: 0 auto;
-          width: auto;
-          min-width: 400px;
-          position: fixed;
-          z-index: 99999;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          padding: 20px 30px 30px;
-          background: rgba(255, 255, 255, 0.9);
-          border-radius: 12px;
-      }
-  </style>
-
-  <script type="text/javascript">
-      async function detectAdBlock() {
-          let adBlockEnabled = false;
-          const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-
-          try {
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
-
-              await fetch(new Request(googleAdUrl), { signal: controller.signal })
-                  .then(() => clearTimeout(timeoutId))
-                  .catch(error => {
-                      if (error.name === 'AbortError') return; // Ignore timeout errors
-                      adBlockEnabled = true;
-                  });
-
-          } catch (e) {
-              adBlockEnabled = true;
-          }
-
-          if (adBlockEnabled) {
-              document.getElementById("adb").style.display = "block";
-          }
-      }
-
-      detectAdBlock();
-  </script>
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+    video.addEventListener('loadedmetadata', function () {
+      video.play();
+    });
+  } else {
+    alert("Your browser doesn't support HLS.");
+  }
+</script>
 
 </body>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </html>
