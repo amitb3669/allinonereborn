@@ -80,11 +80,7 @@
     <script type="text/javascript">
         jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
         jwplayer("player-container").setup({
-            file: "https://abmyxykaaaaaaaamkyvb65fuqebyg.7a77200bf98444ac997a89ed83775793.emt.cf.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd",
-                "clearkey": "a374d4f24f5a101203c2d714adeac805:1a34df7de436868747bd29fab5bc7cbc"
-            },
-            "SD": {
-                "mpd": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash-sd/enc/sqxzntznhn/out/v1/23fd656f4d394fffa1f2fa0bcdb21d70/cenc-sd.mpd",
+            file: "https://otte.live.fly.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/uugw0qkwob/out/v1/acfdcf2dabd24075bb615c6c19ba9bd4/cenc.mpd",
             aspectratio: '16:9',
             width: '100%',
             autostart: true,
@@ -97,8 +93,8 @@
             },
             drm: {
                 "clearkey": {
-                    "keyId": "bd74ff294257904a0d344d19cb3cfcb6",
-                    "key": "15889071f933f375b4c2734579b7eb31"
+                    "keyId": "ec2147a4b9b1b87ee3d8dc6915bc7928",
+                    "key": "c84fcd82767a9cd9e2e0c0d1b47a72c5"
                 }
             }
         });
@@ -123,90 +119,65 @@
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
-        <p>Please disable your adblocker to continue browsing.</p>
+        <p>Please disable adblock to proceed to the destination page</p>
     </div>
 </div>
 
 <style>
     .adb {
+        display: none;
         position: fixed;
         width: 100%;
         height: 100%;
         left: 0;
         top: 0;
-        background: rgba(0, 0, 0, 0.85);
-        z-index: 99999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        color: #000;
+        background: rgba(51, 51, 51, 0.9);
+        z-index: 10000;
+        text-align: center;
+        color: #111;
     }
 
     .adbs {
-        background: #fff;
-        padding: 30px;
+        margin: 0 auto;
+        width: auto;
+        min-width: 400px;
+        position: fixed;
+        z-index: 99999;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 30px 30px;
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 12px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-    }
-
-    .adbs h3 {
-        margin-bottom: 15px;
-        font-size: 24px;
-        color: #d00;
-    }
-
-    .adbs p {
-        font-size: 16px;
-        color: #333;
     }
 </style>
 
-<script>
-function showAdblockPopup() {
-    document.getElementById('adb').style.display = 'flex';
-}
+<script type="text/javascript">
+    async function detectAdBlock() {
+        let adBlockEnabled = false;
+        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
 
-function baitElementCheck() {
-    return new Promise((resolve) => {
-        const bait = document.createElement('div');
-        bait.className = 'adsbox ad-banner';
-        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
-        document.body.appendChild(bait);
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
 
-        setTimeout(() => {
-            const blocked = window.getComputedStyle(bait).display === 'none' || bait.offsetHeight === 0;
-            bait.remove();
-            resolve(blocked);
-        }, 100); // Wait briefly to give adblocker time to act
-    });
-}
+            await fetch(new Request(googleAdUrl), { signal: controller.signal })
+                .then(() => clearTimeout(timeoutId))
+                .catch(error => {
+                    if (error.name === 'AbortError') return; // Ignore timeout errors
+                    adBlockEnabled = true;
+                });
 
-function googleAdsScriptCheck() {
-    return new Promise((resolve) => {
-        const testScript = document.createElement('script');
-        testScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-        testScript.async = true;
-        testScript.type = 'text/javascript';
+        } catch (e) {
+            adBlockEnabled = true;
+        }
 
-        // If adblocker blocks it, onerror will trigger
-        testScript.onerror = () => resolve(true);
-        testScript.onload = () => resolve(false);
-
-        document.head.appendChild(testScript);
-    });
-}
-
-window.addEventListener('load', async () => {
-    const baitBlocked = await baitElementCheck();
-    const scriptBlocked = await googleAdsScriptCheck();
-
-    if (baitBlocked || scriptBlocked) {
-        showAdblockPopup();
+        if (adBlockEnabled) {
+            document.getElementById("adb").style.display = "block";
+        }
     }
-});
+
+    detectAdBlock();
 </script>
 </body>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
