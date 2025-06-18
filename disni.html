@@ -21,7 +21,7 @@
       backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 30px;
+      padding: 30px 15px 80px; /* extra bottom padding for ad */
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
       width: 100%;
       max-width: 850px;
@@ -83,21 +83,62 @@
       border-radius: 12px;
     }
     .hidden { display: none; }
+
+    .ad-top, .ad-bottom {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 468px;
+      height: 60px;
+      z-index: 10;
+    }
+    .ad-top {
+      top: -80px;
+    }
+    .ad-bottom {
+      bottom: -80px;
+    }
+
     @keyframes spin {
       0% { transform: translate(-50%, -50%) rotate(0deg); }
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
+
     @media screen and (max-width: 600px) {
-      .player-container { padding: 20px; }
-      h1 { font-size: 20px; }
-      select { width: 100%; }
+      .player-container {
+        padding: 20px 10px 100px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      select {
+        width: 100%;
+      }
+      .ad-top, .ad-bottom {
+        width: 320px;
+        height: 50px;
+      }
     }
   </style>
 </head>
 <body>
 
 <div class="player-container">
-  <h1>Disney Multi Audio </h1>
+  <!-- Top Ad -->
+  <div class="ad-top">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '244d55edeba6016826a285214b7c7c77',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
+  </div>
+
+  <h1>Disney Multi Audio</h1>
   <div id="videoWrapper" style="position:relative;">
     <video id="video" controls playsinline muted></video>
     <div class="loading-overlay" id="loading">
@@ -107,6 +148,20 @@
 
   <label for="audioTrack">Select Audio Track</label>
   <select id="audioTrack"></select>
+
+  <!-- Bottom Ad -->
+  <div class="ad-bottom">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '244d55edeba6016826a285214b7c7c77',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//eltontry.com/244d55edeba6016826a285214b7c7c77/invoke.js"></script>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -148,7 +203,6 @@
         audioSelect.appendChild(option);
       });
 
-      // Auto-select first (Hindi)
       if (data.audioTracks.length > 0) {
         audioSelect.value = 0;
         hls.audioTrack = 0;
