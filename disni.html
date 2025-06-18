@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .player-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+      position: relative;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ffffffcc;
+    }
+    video {
+      width: 100%;
+      border-radius: 12px;
+      background: #000;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #ffffffdd;
+    }
+    select {
+      margin-top: 8px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      appearance: none;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+    select:hover {
+      background-color: #444;
+      cursor: pointer;
+    }
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .loading-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+    }
+    .hidden { display: none; }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @media screen and (max-width: 600px) {
+      .player-container { padding: 20px; }
+      h1 { font-size: 20px; }
+      select { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="player-container">
+  <h1>Disney Multi Audio </h1>
+  <div id="videoWrapper" style="position:relative;">
+    <video id="video" controls playsinline muted></video>
+    <div class="loading-overlay" id="loading">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <label for="audioTrack">Select Audio Track</label>
+  <select id="audioTrack"></select>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  const video = document.getElementById('video');
+  const audioSelect = document.getElementById('audioTrack');
+  const loadingOverlay = document.getElementById('loading');
+  const streamUrl = 'https://allinonereborn.site/hls1/master.m3u8';
+
+  function hideLoader() {
+    loadingOverlay.classList.add('hidden');
+  }
+
+  video.addEventListener('playing', hideLoader);
+  video.addEventListener('loadeddata', hideLoader);
+
+  if (Hls.isSupported()) {
+    const hls = new Hls({
+      lowLatencyMode: true,
+      liveSyncDurationCount: 2,
+      maxBufferSize: 0,
+      backBufferLength: 90,
+      maxLiveSyncPlaybackRate: 1.0
+    });
+
+    hls.loadSource(streamUrl);
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      video.play().catch(err => console.warn('Autoplay blocked:', err));
+    });
+
+    hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, (_, data) => {
+      audioSelect.innerHTML = '';
+      data.audioTracks.forEach((track, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.text = track.name || `${track.lang || 'Track'} ${index + 1}`;
+        audioSelect.appendChild(option);
+      });
+
+      // Auto-select first (Hindi)
+      if (data.audioTracks.length > 0) {
+        audioSelect.value = 0;
+        hls.audioTrack = 0;
+      }
+    });
+
+    audioSelect.addEventListener('change', () => {
+      const selected = parseInt(audioSelect.value, 10);
+      if (!isNaN(selected)) {
+        hls.audioTrack = selected;
+        console.log("Switched to audio track:", selected);
+      }
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = streamUrl;
+    video.addEventListener('loadedmetadata', () => {
+      video.play().catch(err => console.warn('Autoplay blocked:', err));
+    });
+  } else {
+    alert("Your browser doesn't support HLS.");
+  }
+</script>
+
+</body>
+</html>
