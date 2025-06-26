@@ -230,45 +230,41 @@
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
-        <p>Please disable your adblocker to continue browsing.</p>
+        <p>Please disable your adblocker to continue browsing this site.</p>
     </div>
 </div>
 
 <style>
-    .adb {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: rgba(0, 0, 0, 0.85);
-        z-index: 99999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        color: #000;
-    }
-
-    .adbs {
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-    }
-
-    .adbs h3 {
-        margin-bottom: 15px;
-        font-size: 24px;
-        color: #d00;
-    }
-
-    .adbs p {
-        font-size: 16px;
-        color: #333;
-    }
+.adb {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.adbs {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+.adbs h3 {
+    color: #d00;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.adbs p {
+    font-size: 16px;
+    color: #333;
+}
 </style>
 
 <script>
@@ -276,41 +272,59 @@ function showAdblockPopup() {
     document.getElementById('adb').style.display = 'flex';
 }
 
-function baitElementCheck() {
-    return new Promise((resolve) => {
-        const bait = document.createElement('div');
-        bait.className = 'adsbox ad-banner';
-        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
-        document.body.appendChild(bait);
+async function detectAdblock() {
+    let detected = false;
 
-        setTimeout(() => {
-            const blocked = window.getComputedStyle(bait).display === 'none' || bait.offsetHeight === 0;
-            bait.remove();
-            resolve(blocked);
-        }, 100); // Wait briefly to give adblocker time to act
-    });
-}
+    // 1. Bait DIV
+    const bait = document.createElement('div');
+    bait.className = 'ad adsbox ad-banner adsense ad-container sponsored';
+    bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    document.body.appendChild(bait);
 
-function googleAdsScriptCheck() {
-    return new Promise((resolve) => {
-        const testScript = document.createElement('script');
-        testScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-        testScript.async = true;
-        testScript.type = 'text/javascript';
+    // 2. Bait Image
+    const img = document.createElement('img');
+    img.src = 'https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz'; // fake image ad
+    img.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    img.onerror = () => { detected = true; };
+    document.body.appendChild(img);
 
-        // If adblocker blocks it, onerror will trigger
-        testScript.onerror = () => resolve(true);
-        testScript.onload = () => resolve(false);
+    // 3. Bait Iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html';
+    iframe.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    iframe.onerror = () => { detected = true; };
+    document.body.appendChild(iframe);
 
-        document.head.appendChild(testScript);
-    });
+    // 4. Google AdSense Script
+    const script = document.createElement('script');
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+    script.async = true;
+    script.onerror = () => { detected = true; };
+    document.head.appendChild(script);
+
+    // Give adblockers time to remove/hide things
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    if (
+        window.getComputedStyle(bait).display === 'none' 
+        bait.offsetHeight === 0 
+        bait.offsetParent === null
+    ) {
+        detected = true;
+    }
+
+    // Cleanup
+    bait.remove();
+    img.remove();
+    iframe.remove();
+    script.remove();
+
+    return detected;
 }
 
 window.addEventListener('load', async () => {
-    const baitBlocked = await baitElementCheck();
-    const scriptBlocked = await googleAdsScriptCheck();
-
-    if (baitBlocked || scriptBlocked) {
+    const blocked = await detectAdblock();
+    if (blocked) {
         showAdblockPopup();
     }
 });
