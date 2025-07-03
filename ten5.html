@@ -115,69 +115,108 @@
             console.error("Playback error:", e.message);
         });
     </script>
-<!-- Anti-Adblock Popup -->
+    <!-- Anti-Adblock Popup -->
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
-        <p>Please disable adblock to proceed to the destination page</p>
+        <p>Please disable your adblocker to continue browsing this site.</p>
     </div>
 </div>
 
 <style>
-    .adb {
-        display: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: rgba(51, 51, 51, 0.9);
-        z-index: 10000;
-        text-align: center;
-        color: #111;
-    }
-
-    .adbs {
-        margin: 0 auto;
-        width: auto;
-        min-width: 400px;
-        position: fixed;
-        z-index: 99999;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px 30px 30px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-    }
+.adb {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.adbs {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+.adbs h3 {
+    color: #d00;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.adbs p {
+    font-size: 16px;
+    color: #333;
+}
 </style>
 
-<script type="text/javascript">
-    async function detectAdBlock() {
-        let adBlockEnabled = false;
-        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+<script>
+function showAdblockPopup() {
+    document.getElementById('adb').style.display = 'flex';
+}
 
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+async function detectAdblock() {
+    let detected = false;
 
-            await fetch(new Request(googleAdUrl), { signal: controller.signal })
-                .then(() => clearTimeout(timeoutId))
-                .catch(error => {
-                    if (error.name === 'AbortError') return; // Ignore timeout errors
-                    adBlockEnabled = true;
-                });
+    // 1. Bait DIV
+    const bait = document.createElement('div');
+    bait.className = 'ad adsbox ad-banner adsense ad-container sponsored';
+    bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    document.body.appendChild(bait);
 
-        } catch (e) {
-            adBlockEnabled = true;
-        }
+    // 2. Bait Image
+    const img = document.createElement('img');
+    img.src = 'https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz'; // fake image ad
+    img.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    img.onerror = () => { detected = true; };
+    document.body.appendChild(img);
 
-        if (adBlockEnabled) {
-            document.getElementById("adb").style.display = "block";
-        }
+    // 3. Bait Iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html';
+    iframe.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+    iframe.onerror = () => { detected = true; };
+    document.body.appendChild(iframe);
+
+    // 4. Google AdSense Script
+    const script = document.createElement('script');
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+    script.async = true;
+    script.onerror = () => { detected = true; };
+    document.head.appendChild(script);
+
+    // Give adblockers time to remove/hide things
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    if (
+        window.getComputedStyle(bait).display === 'none' 
+        bait.offsetHeight === 0 
+        bait.offsetParent === null
+    ) {
+        detected = true;
     }
 
-    detectAdBlock();
+    // Cleanup
+    bait.remove();
+    img.remove();
+    iframe.remove();
+    script.remove();
+
+    return detected;
+}
+
+window.addEventListener('load', async () => {
+    const blocked = await detectAdblock();
+    if (blocked) {
+        showAdblockPopup();
+    }
+});
 </script>
 </body>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
