@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ALL IN ONE Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5px;
+        }
+
+        .ad-space {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        #video-container {
+            width: 100%;
+            position: relative;
+            background-color: #000;
+        }
+
+        #video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+        }
+
+        #video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Custom controls for better mobile experience */
+        .custom-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #video-container:hover .custom-controls,
+        #video-container:active .custom-controls {
+            opacity: 1;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: #ff0000;
+            width: 0%;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .time-display {
+            color: white;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+
+        /* Responsive ads */
+        @media (max-width: 768px) {
+            .ad-space {
+                height: auto;
+            }
+            
+            .control-btn {
+                font-size: 14px;
+                padding: 6px;
+                min-width: 36px;
+            }
+            
+            .time-display {
+                font-size: 12px;
+            }
+        }
+
+        /* Fullscreen mode */
+        #video-container:-webkit-full-screen {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+        }
+        
+        #video-container:-moz-full-screen {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+        }
+        
+        #video-container:-ms-fullscreen {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+        }
+        
+        #video-container:fullscreen {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+        }
+
+        /* Loading spinner */
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Error message */
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+            max-width: 80%;
+        }
+
+        /* Touch-friendly fullscreen button */
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 10;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Ad Space Above the Player -->
+        <div class="ad-space" id="ad-above">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+        </div>
+
+        <div id="video-container">
+            <div id="video-wrapper">
+                <video id="video" playsinline webkit-playsinline></video>
+                <div class="loader" id="loader"></div>
+                <div class="error-message" id="error-message"></div>
+                <button class="fullscreen-btn" id="fullscreen-btn">⛶</button>
+                <div class="custom-controls">
+                    <div class="progress-container" id="progress-container">
+                        <div id="progress-bar"></div>
+                    </div>
+                    <div class="controls-row">
+                        <div>
+                            <button class="control-btn" id="play-btn">▶</button>
+                            <span class="time-display" id="time-display">00:00 / 00:00</span>
+                        </div>
+                        <div>
+                            <button class="control-btn" id="mute-btn">🔊</button>
+                            <button class="control-btn" id="fullscreen-control-btn">⛶</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ad Space Below the Player -->
+        <div class="ad-space" id="ad-below">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '701fef7de243c4e8e91e6e6b3a2fea1e',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//eltontry.com/701fef7de243c4e8e91e6e6b3a2fea1e/invoke.js"></script>
+        </div>
+    </div>
+
+    <script>
+        // Video elements
+        const video = document.getElementById('video');
+        const videoContainer = document.getElementById('video-container');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        
+        // Custom controls
+        const playBtn = document.getElementById('play-btn');
+        const muteBtn = document.getElementById('mute-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const timeDisplay = document.getElementById('time-display');
+        const fullscreenControlBtn = document.getElementById('fullscreen-control-btn');
+        
+        // Initialize HLS if supported
+        let hls;
+        
+        function initPlayer() {
+            if (Hls.isSupported()) {
+                hls = new Hls({
+                    maxBufferLength: 30,
+                    maxBufferSize: 60 * 1000 * 1000,
+                    lowLatencyMode: true,
+                    backBufferLength: 90,
+                    liveSyncDurationCount: 3,
+                    enableWorker: true
+                });
+                
+                hls.loadSource('https://allinonereborn.space/hls/sony1/index.m3u8');
+                hls.attachMedia(video);
+                
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    video.play().catch(e => {
+                        // Autoplay was prevented, show play button
+                        playBtn.textContent = '▶';
+                    });
+                });
+                
+                hls.on(Hls.Events.ERROR, function(event, data) {
+                    if (data.fatal) {
+                        switch(data.type) {
+                            case Hls.ErrorTypes.NETWORK_ERROR:
+                                showError('Network error. Trying to recover...');
+                                hls.startLoad();
+                                break;
+                            case Hls.ErrorTypes.MEDIA_ERROR:
+                                showError('Media error. Attempting recovery...');
+                                hls.recoverMediaError();
+                                break;
+                            default:
+                                showError('Unrecoverable error. Please try again later.');
+                                hls.destroy();
+                                break;
+                        }
+                    }
+                });
+                
+                hls.on(Hls.Events.FRAG_LOADING, function() {
+                    showLoader();
+                });
+                
+                hls.on(Hls.Events.FRAG_LOADED, function() {
+                    hideLoader();
+                });
+                
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // Native HLS support (Safari)
+                video.src = 'https://allinonereborn.fun/str2/index.m3u8';
+                video.addEventListener('loadedmetadata', function() {
+                    video.play().catch(e => {
+                        playBtn.textContent = '▶';
+                    });
+                });
+            } else {
+                showError('Your browser does not support this video format.');
+            }
+        }
+        
+        // Show loading spinner
+        function showLoader() {
+            loader.style.display = 'block';
+        }
+        
+        // Hide loading spinner
+        function hideLoader() {
+            loader.style.display = 'none';
+        }
+        
+        // Show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            hideLoader();
+        }
+        
+        // Format time (seconds to MM:SS)
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Update progress bar and time display
+        function updateProgress() {
+            if (isNaN(video.duration)) return;
+            
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+        }
+        
+        // Seek to position when progress bar is clicked
+        function seek(e) {
+            const pos = (e.pageX - progressContainer.getBoundingClientRect().left) / progressContainer.offsetWidth;
+            video.currentTime = pos * video.duration;
+        }
+        
+        // Toggle play/pause
+        function togglePlay() {
+            if (video.paused) {
+                video.play().then(() => {
+                    playBtn.textContent = '❚❚';
+                }).catch(e => {
+                    // Autoplay was prevented
+                    playBtn.textContent = '▶';
+                });
+            } else {
+                video.pause();
+                playBtn.textContent = '▶';
+            }
+        }
+        
+        // Toggle mute
+        function toggleMute() {
+            video.muted = !video.muted;
+            muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        }
+        
+        // Toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                videoContainer.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
+        // Update fullscreen button based on state
+        function updateFullscreenButton() {
+            const isFullscreen = document.fullscreenElement;
+            fullscreenControlBtn.textContent = isFullscreen ? '⛶ Exit' : '⛶ Full';
+        }
+        
+        // Show/hide controls on mobile touch
+        let controlsTimeout;
+        function showControls() {
+            videoContainer.querySelector('.custom-controls').style.opacity = '1';
+            fullscreenBtn.style.display = 'block';
+            
+            clearTimeout(controlsTimeout);
+            controlsTimeout = setTimeout(() => {
+                videoContainer.querySelector('.custom-controls').style.opacity = '0';
+                fullscreenBtn.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Event listeners
+        video.addEventListener('timeupdate', updateProgress);
+        video.addEventListener('click', togglePlay);
+        video.addEventListener('dblclick', toggleFullscreen);
+        video.addEventListener('touchstart', showControls);
+        video.addEventListener('play', () => { playBtn.textContent = '❚❚'; });
+        video.addEventListener('pause', () => { playBtn.textContent = '▶'; });
+        video.addEventListener('waiting', showLoader);
+        video.addEventListener('playing', hideLoader);
+        video.addEventListener('error', () => { showError('Video playback error occurred.'); });
+        
+        progressContainer.addEventListener('click', seek);
+        playBtn.addEventListener('click', togglePlay);
+        muteBtn.addEventListener('click', toggleMute);
+        fullscreenControlBtn.addEventListener('click', toggleFullscreen);
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+        
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+        document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+        document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+        
+        // Touch events for progress bar
+        progressContainer.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            seek(e.touches[0]);
+        });
+        
+        progressContainer.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            seek(e.touches[0]);
+        });
+        
+        // Initialize player when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initPlayer);
+        
+        // Make sure controls are visible when interacting with them
+        const controls = document.querySelector('.custom-controls');
+        controls.addEventListener('touchstart', (e) => e.stopPropagation());
+        controls.addEventListener('mousedown', (e) => e.stopPropagation());
+    </script>
+    <script type='text/javascript' src='//realiserecognize.com/09/f1/e9/09f1e956c711aea6a898d5abbb78d092.js'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+</body>
+</html>
