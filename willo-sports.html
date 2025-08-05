@@ -119,65 +119,287 @@
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
-        <p>Please disable adblock to proceed to the destination page</p>
+        <p>Please disable your adblocker to continue browsing this site.</p>
     </div>
 </div>
 
 <style>
-    .adb {
-        display: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: rgba(51, 51, 51, 0.9);
-        z-index: 10000;
-        text-align: center;
-        color: #111;
-    }
-
-    .adbs {
-        margin: 0 auto;
-        width: auto;
-        min-width: 400px;
-        position: fixed;
-        z-index: 99999;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px 30px 30px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-    }
+.adb {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.adbs {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+.adbs h3 {
+    color: #d00;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.adbs p {
+    font-size: 16px;
+    color: #333;
+}
 </style>
 
-<script type="text/javascript">
-    async function detectAdBlock() {
-        let adBlockEnabled = false;
-        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+<script>
+function showAdblockPopup() {
+    document.getElementById('adb').style.display = 'flex';
+}
 
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
+async function detectAdblock() {
+    return new Promise(resolve => {
+        let detected = false;
 
-            await fetch(new Request(googleAdUrl), { signal: controller.signal })
-                .then(() => clearTimeout(timeoutId))
-                .catch(error => {
-                    if (error.name === 'AbortError') return; // Ignore timeout errors
-                    adBlockEnabled = true;
-                });
+        // Create bait elements
+        const bait = document.createElement('div');
+        bait.innerHTML = '&nbsp;';
+        bait.className = 'adsbox ad adsense banner-ad';
+        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;visibility:visible;';
+        document.body.appendChild(bait);
 
-        } catch (e) {
-            adBlockEnabled = true;
-        }
+        const img = document.createElement('img');
+        img.src = 'https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz';
+        img.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+        img.onerror = () => { detected = true; };
+        document.body.appendChild(img);
 
-        if (adBlockEnabled) {
-            document.getElementById("adb").style.display = "block";
-        }
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html';
+        iframe.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+        iframe.onerror = () => { detected = true; };
+        document.body.appendChild(iframe);
+
+        // Wait 300ms to give adblockers time
+        setTimeout(() => {
+            const baitStyles = window.getComputedStyle(bait);
+            if (
+                detected ||
+                baitStyles.display === 'none' ||
+                baitStyles.visibility === 'hidden' ||
+                bait.offsetHeight === 0 ||
+                bait.offsetParent === null
+            ) {
+                detected = true;
+            }
+
+            // Cleanup
+            bait.remove();
+            img.remove();
+            iframe.remove();
+
+            resolve(detected);
+        }, 300);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const isBlocked = await detectAdblock();
+    if (isBlocked) {
+        showAdblockPopup();
+    }
+});
+</script>
+
+<script>
+// Support Us Popup with 1-second countdown, URL redirection, and 30-minute cooldown
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to get page-specific storage key
+    function getPageKey() {
+        return 'popupShown_' + window.location.pathname;
     }
 
-    detectAdBlock();
+    // Check if popup was shown for this page in the last 30 minutes
+    const pageKey = getPageKey();
+    const popupShownTime = localStorage.getItem(pageKey);
+    const currentTime = new Date().getTime();
+    const thirtyMinutes = 30 * 60 * 1000;
+
+    if (!popupShownTime || (currentTime - popupShownTime) > thirtyMinutes) {
+        showPopup();
+    }
+
+    function showPopup() {
+        // Create popup elements with enhanced styling
+        const popupHTML = `
+        <div id="popup-overlay" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.5s ease-out;
+        ">
+            <div id="popup-content" style="
+                background: linear-gradient(145deg, #1a1a2e, #16213e);
+                padding: 40px;
+                border-radius: 15px;
+                text-align: center;
+                max-width: 500px;
+                width: 90%;
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+                border: 1px solid rgba(0, 255, 255, 0.2);
+                position: relative;
+                overflow: hidden;
+                animation: slideUp 0.5s ease-out;
+            ">
+                <div style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: linear-gradient(90deg, #00ffcc, #00fffc, #00ccff);
+                "></div>
+                
+                <h2 style="
+                    color: #00fffc;
+                    font-size: 28px;
+                    margin-bottom: 15px;
+                    text-shadow: 0 0 10px rgba(0, 255, 252, 0.5);
+                    font-family: 'Arial', sans-serif;
+                ">Support Our Work</h2>
+                
+                <p style="
+                    color: #ffffff;
+                    font-size: 16px;
+                    line-height: 1.6;
+                    margin-bottom: 25px;
+                ">We're committed to providing quality content. Your support helps us keep going!</p>
+                
+                <button id="support-btn" style="
+                    background: linear-gradient(45deg, #00ffcc, #00ccff);
+                    color: #111;
+                    padding: 15px 40px;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+                    position: relative;
+                    overflow: hidden;
+                ">SUPPORT NOW</button>
+                
+                <div id="countdown" style="
+                    margin-top: 20px;
+                    font-size: 16px;
+                    color: rgba(255,255,255,0.7);
+                    display: none;
+                    animation: pulse 1s infinite alternate;
+                ">Access granted! Closing in <span id="countdown-number" style="
+                    color: #00fffc;
+                    font-weight: bold;
+                ">1</span> second...</div>
+                
+                <div style="
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: linear-gradient(90deg, #00ffcc, #00fffc, #00ccff);
+                "></div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideUp {
+                from { transform: translateY(20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            @keyframes pulse {
+                from { opacity: 0.7; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes neonGlow {
+                0% { box-shadow: 0 0 10px rgba(0, 255, 252, 0.7); }
+                50% { box-shadow: 0 0 20px rgba(0, 255, 252, 0.9), 0 0 30px rgba(0, 204, 255, 0.5); }
+                100% { box-shadow: 0 0 10px rgba(0, 255, 252, 0.7); }
+            }
+            
+            #support-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 25px rgba(0, 204, 255, 0.8);
+                animation: neonGlow 1.5s infinite;
+            }
+            
+            #support-btn:active {
+                transform: translateY(1px);
+            }
+            
+            #support-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: 0.5s;
+            }
+            
+            #support-btn:hover::before {
+                left: 100%;
+            }
+        </style>`;
+
+        // Add popup to the page
+        document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+        // Handle support button click
+        document.getElementById('support-btn').addEventListener('click', function() {
+            // Store the current time for this page
+            localStorage.setItem(pageKey, currentTime.toString());
+            
+            // Open the ad URL in new tab
+            window.open('https://staunchtownsegg.com/xi7nvp42w?key=c7e203300673013b206701b3857ddf28', '_blank');
+            
+            // Show countdown
+            const countdownEl = document.getElementById('countdown');
+            const countdownNumber = document.getElementById('countdown-number');
+            countdownEl.style.display = 'block';
+            this.style.pointerEvents = 'none';
+            
+            // 1-second countdown
+            setTimeout(function() {
+                document.getElementById('popup-overlay').style.animation = 'fadeIn 0.5s ease-out reverse';
+                setTimeout(() => {
+                    document.getElementById('popup-overlay').remove();
+                }, 500);
+            }, 1000);
+        });
+    }
+});
 </script>
 </body>
 
