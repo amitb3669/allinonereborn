@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Allinone Live TV Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00ffff;
+      --secondary: #ff00ff;
+      --dark: #0d0f15;
+      --darker: #090b0f;
+      --card-bg: #1c1f26;
+      --footer-bg: #10121a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      position: relative;
+      z-index: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .header-container {
+      position: relative;
+      padding: 2rem 0;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin: 0 auto;
+      background: linear-gradient(90deg, #ff4d4d, #00fff7, #ff00c8, #00ff8c);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rgbMove 5s linear infinite;
+      position: relative;
+      display: inline-block;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    h1::before, h1::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 50vw;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5));
+      transform: translateY(-50%);
+    }
+
+    h1::before {
+      right: 100%;
+      background: linear-gradient(90deg, rgba(0, 255, 255, 0.5), transparent);
+    }
+
+    h1::after {
+      left: 100%;
+    }
+
+    @keyframes rgbMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header-icon {
+      font-size: 2.5rem;
+      margin-right: 15px;
+      color: var(--primary);
+      vertical-align: middle;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .channel-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      perspective: 1000px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .channel-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 15px 15px 10px;
+      width: 180px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 240px;
+      opacity: 0;
+      transform: translateY(40px) rotateY(10deg);
+      animation: fadeInUp 0.8s forwards;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      will-change: transform;
+      text-decoration: none;
+    }
+
+    .channel-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+
+    .channel-card:hover {
+      transform: scale(1.05) translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 255, 255, 0.4);
+      z-index: 10;
+    }
+
+    .channel-card:hover::before {
+      opacity: 1;
+      animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: rotate(45deg) translate(-10%, -10%); }
+      100% { transform: rotate(45deg) translate(10%, 10%); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) rotateY(10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0);
+      }
+    }
+
+    .channel-card img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 0 8px var(--primary)) brightness(1.2) contrast(1.2);
+      transition: all 0.3s ease;
+    }
+
+    .channel-card:hover img {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 12px var(--secondary)) brightness(1.3) contrast(1.3);
+    }
+
+    .channel-card h3 {
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      margin: 8px 0;
+      position: relative;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 40px;
+      line-height: 1.3;
+      width: 100%;
+    }
+
+    .channel-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .channel-card:hover h3::after {
+      width: 80%;
+    }
+
+    .explore-btn {
+      margin-top: auto;
+      margin-bottom: 5px;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #2c2f35, #3a3d45);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 90%;
+    }
+
+    .explore-btn:hover {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: #000;
+      box-shadow: 0 0 15px var(--primary);
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+
+    .explore-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .explore-btn:hover::before {
+      left: 100%;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: var(--footer-bg);
+      text-align: center;
+      padding: 40px 20px 25px;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--card-bg), #2a2d35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3);
+    }
+
+    .social-icon:hover::before {
+      left: 100%;
+    }
+
+    .social-icon.telegram { background: linear-gradient(45deg, #0088cc, #00aced); }
+    .social-icon.youtube { background: linear-gradient(45deg, #ff0000, #e52d27); }
+    .social-icon.whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); }
+    .social-icon.facebook { background: linear-gradient(45deg, #3b5998, #4267B2); }
+
+    .footer-text {
+      margin-top: 20px;
+      color: #aaa;
+      font-size: 13px;
+      position: relative;
+    }
+
+    .footer-text::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    .floating-bubbles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+        padding: 0 15px;
+      }
+      
+      .channel-grid {
+        padding: 15px;
+        gap: 15px;
+        justify-content: space-around;
+      }
+      
+      .channel-card {
+        width: calc(50% - 15px);
+        min-width: 140px;
+        height: 220px;
+        padding: 12px 10px 8px;
+      }
+      
+      .channel-card img {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .channel-card h3 {
+        font-size: 15px;
+        min-height: 36px;
+      }
+      
+      .explore-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      
+      .social-icons {
+        gap: 15px;
+      }
+      
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .header-icon {
+        font-size: 2rem;
+      }
+      
+      .channel-card {
+        width: calc(50% - 10px);
+        height: 200px;
+      }
+      
+      .channel-card img {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .channel-card h3 {
+        font-size: 14px;
+        min-height: 34px;
+      }
+      
+      /* Prevent horizontal scrolling */
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      
+      .channel-grid {
+        padding: 10px;
+        gap: 10px;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .channel-card {
+        width: 100%;
+        max-width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="floating-bubbles" id="bubbles"></div>  
+  <h1><i class="fas fa-satellite-dish header-icon"></i> Allinone Live TV Hub</h1>  
+  <div class="channel-grid">
+    <a href="https://amitb3669.github.io/jiotv-plus/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/TMdnTJkK/Screenshot-2025-07-13-131317.png" alt="Star Plus">
+      <h3>JioTv-Plus (ONLY-INDIA)</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+    
+    <a href="https://mini.allinonereborn.site/jiotv-in/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/XkGhJp5x/Screenshot-2025-07-13-131317-copy.png" alt="Sony TV">
+      <h3>JioTv-IND (CatchUp)</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+    
+    <a href="https://mini.allinonereborn.site/jiotv-ww/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/XkGhJp5x/Screenshot-2025-07-13-131317-copy.png" alt="Zee TV">
+      <h3>JioTv-Worldwide (CatchUp)</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+    
+    <a href="https://allinonereborn.fun/sony/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/Y43P6Sxn/Screenshot-2025-07-13-131317-copy.png" alt="News18">
+      <h3>SonyLiv Worldwide</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+    
+    <a href="https://allinonereborn.fun/zee5-web/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/HfmBHLKh/Screenshot-2025-07-13-131317-copy.png" alt="ESPN">
+      <h3>Zee5 HD (WorldWide)</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+
+      <a href="https://allinonereborn.fun/zee5/" class="channel-card" target="_blank">
+        <img src="https://i.ibb.co/HfmBHLKh/Screenshot-2025-07-13-131317-copy.png" alt="ESPN">
+        <h3>Zee5 SD (WorldWide)</h3>
+        <button class="explore-btn">Explore</button>
+      </a>
+      
+    <a href="https://allinonereborn.fun/fcw/" class="channel-card" target="_blank">
+      <img src="https://i.ibb.co/FkY6vB0f/Screenshot-2025-07-13-131317-copy.png" alt="ESPN">
+      <h3>Fancode (Worldwide)</h3>
+      <button class="explore-btn">Explore</button>
+    </a>
+  </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://t.me/allinone_reborn" target="_blank" class="social-icon telegram">
+        <i class="fab fa-telegram"></i>
+      </a>
+      <a href="https://www.youtube.com/@allinonereborn_amit" target="_blank" class="social-icon youtube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://whatsapp.com/channel/0029Va9Bpmg8KMqlvPLv3P3O" target="_blank" class="social-icon whatsapp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.facebook.com/ALLINONEAMITYT" target="_blank" class="social-icon facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
+    <div class="footer-text">
+      © 2025 Allinone Live TV Hub. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 100,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": ["#00ffff", "#ff00ff", "#00ff00", "#ffffff", "#ff9900"]
+        },
+        "shape": {
+          "type": ["circle", "triangle"],
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.6,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 2,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 120,
+          "color": "#00ffff",
+          "opacity": 0.3,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.2,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": true,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 120,
+            "line_linked": {
+              "opacity": 0.8
+            }
+          },
+          "bubble": {
+            "distance": 300,
+            "size": 30,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 150,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 3
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    function createBubbles() {
+      const bubblesContainer = document.getElementById('bubbles');
+      const bubbleCount = 15;
+      
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        
+        const size = Math.random() * 20 + 10;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        bubble.style.animationDelay = `${Math.random() * 5}s`;
+        
+        bubblesContainer.appendChild(bubble);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      createBubbles();
+      
+      const cards = document.querySelectorAll('.channel-card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+      });
+      
+      // Prevent horizontal scrolling on touch devices
+      document.body.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1) {
+          if (Math.abs(e.touches[0].pageX - this.touchStartX) > Math.abs(e.touches[0].pageY - this.touchStartY)) {
+            e.preventDefault();
+          }
+        }
+      }, { passive: false });
+      
+      document.body.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+          this.touchStartX = e.touches[0].pageX;
+          this.touchStartY = e.touches[0].pageY;
+        }
+      }, { passive: true });
+    });
+  </script>
+  <!-- Anti-Adblock Popup -->
+<div class="adb" id="adb" style="display: none;">
+    <div class="adbs">
+        <h3>Adblock Detected</h3>
+        <p>Please disable your adblocker to continue browsing this site.</p>
+    </div>
+</div>
+
+<style>
+.adb {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.adbs {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+.adbs h3 {
+    color: #d00;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.adbs p {
+    font-size: 16px;
+    color: #333;
+}
+</style>
+
+<script>
+function showAdblockPopup() {
+    document.getElementById('adb').style.display = 'flex';
+}
+
+async function detectAdblock() {
+    return new Promise(resolve => {
+        let detected = false;
+
+        // Create bait elements
+        const bait = document.createElement('div');
+        bait.innerHTML = '&nbsp;';
+        bait.className = 'adsbox ad adsense banner-ad';
+        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;visibility:visible;';
+        document.body.appendChild(bait);
+
+        const img = document.createElement('img');
+        img.src = 'https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz';
+        img.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+        img.onerror = () => { detected = true; };
+        document.body.appendChild(img);
+
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html';
+        iframe.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
+        iframe.onerror = () => { detected = true; };
+        document.body.appendChild(iframe);
+
+        // Wait 300ms to give adblockers time
+        setTimeout(() => {
+            const baitStyles = window.getComputedStyle(bait);
+            if (
+                detected ||
+                baitStyles.display === 'none' ||
+                baitStyles.visibility === 'hidden' ||
+                bait.offsetHeight === 0 ||
+                bait.offsetParent === null
+            ) {
+                detected = true;
+            }
+
+            // Cleanup
+            bait.remove();
+            img.remove();
+            iframe.remove();
+
+            resolve(detected);
+        }, 300);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const isBlocked = await detectAdblock();
+    if (isBlocked) {
+        showAdblockPopup();
+    }
+});
+</script>
+</body>
+
+</html>
