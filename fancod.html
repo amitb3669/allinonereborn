@@ -80,7 +80,7 @@
     <script type="text/javascript">
         jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
         jwplayer("player-container").setup({
-            file: "https://a204aivottepl-a.akamaihd.net/sin-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd",
+            file: "https://a166aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/clients/dash/enc/inpyms8ezu/out/v1/1084d5c9a97a4c5b9f9554c88f486646/cenc.mpd",
             aspectratio: '16:9',
             width: '100%',
             autostart: true,
@@ -93,8 +93,8 @@
             },
             drm: {
                 "clearkey": {
-                    "keyId": "7e9239c1982d984a002df3ed049d0756",
-                    "key": "1b8a17598129a3618535c8fb05f103fe"
+                    "keyId": "065051b99bf5cf8d9a3bde5cbde6aaf9",
+                    "key": "214bd176832872339ce184338320f9a2"
                 }
             }
         });
@@ -119,184 +119,67 @@
 <div class="adb" id="adb" style="display: none;">
     <div class="adbs">
         <h3>Adblock Detected</h3>
-        <p>Please disable your adblocker to continue browsing this site.</p>
+        <p>Please disable adblock to proceed to the destination page</p>
     </div>
 </div>
 
 <style>
-.adb {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 99999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-.adbs {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-}
-.adbs h3 {
-    color: #d00;
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-.adbs p {
-    font-size: 16px;
-    color: #333;
-}
+    .adb {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(51, 51, 51, 0.9);
+        z-index: 10000;
+        text-align: center;
+        color: #111;
+    }
+
+    .adbs {
+        margin: 0 auto;
+        width: auto;
+        min-width: 400px;
+        position: fixed;
+        z-index: 99999;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 30px 30px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+    }
 </style>
 
-<script>
-function showAdblockPopup() {
-    document.getElementById('adb').style.display = 'flex';
-}
+<script type="text/javascript">
+    async function detectAdBlock() {
+        let adBlockEnabled = false;
+        const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
 
-async function detectAdblock() {
-    return new Promise(resolve => {
-        let detected = false;
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3s timeout
 
-        // Create bait elements
-        const bait = document.createElement('div');
-        bait.innerHTML = '&nbsp;';
-        bait.className = 'adsbox ad adsense banner-ad';
-        bait.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;visibility:visible;';
-        document.body.appendChild(bait);
+            await fetch(new Request(googleAdUrl), { signal: controller.signal })
+                .then(() => clearTimeout(timeoutId))
+                .catch(error => {
+                    if (error.name === 'AbortError') return; // Ignore timeout errors
+                    adBlockEnabled = true;
+                });
 
-        const img = document.createElement('img');
-        img.src = 'https://pagead2.googlesyndication.com/pagead/imgad?id=CAASFeDxyz';
-        img.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
-        img.onerror = () => { detected = true; };
-        document.body.appendChild(img);
+        } catch (e) {
+            adBlockEnabled = true;
+        }
 
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://googleads.g.doubleclick.net/pagead/html/r2023/sample-ad.html';
-        iframe.style.cssText = 'width:1px;height:1px;position:absolute;left:-9999px;top:-9999px;';
-        iframe.onerror = () => { detected = true; };
-        document.body.appendChild(iframe);
-
-        // Wait 300ms to give adblockers time
-        setTimeout(() => {
-            const baitStyles = window.getComputedStyle(bait);
-            if (
-                detected ||
-                baitStyles.display === 'none' ||
-                baitStyles.visibility === 'hidden' ||
-                bait.offsetHeight === 0 ||
-                bait.offsetParent === null
-            ) {
-                detected = true;
-            }
-
-            // Cleanup
-            bait.remove();
-            img.remove();
-            iframe.remove();
-
-            resolve(detected);
-        }, 300);
-    });
-}
-
-window.addEventListener('DOMContentLoaded', async () => {
-    const isBlocked = await detectAdblock();
-    if (isBlocked) {
-        showAdblockPopup();
+        if (adBlockEnabled) {
+            document.getElementById("adb").style.display = "block";
+        }
     }
-});
-</script>
 
+    detectAdBlock();
+</script>
 </body>
-<div id="adPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(5px); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; opacity:0; transition:opacity 0.3s ease; padding:15px;">
-  <div style="background:linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); padding:25px; border-radius:15px; text-align:center; max-width:400px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,0.15); transform:translateY(20px); transition:transform 0.3s ease; margin:auto;">
-    <div style="margin-bottom:15px;">
-      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4CAF50" stroke-width="2"/>
-        <path d="M12 8V12L15 15" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <h3 style="color:#333; margin-bottom:10px; font-weight:600; font-size:18px;">Support Our Website</h3>
-    <p style="color:#666; margin-bottom:20px; line-height:1.5; font-size:14px;">Please click the button below and wait 5 seconds to continue browsing</p>
-    
-    <button id="supportBtn" style="background:linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); color:white; padding:12px 25px; border:none; border-radius:50px; margin-top:10px; cursor:pointer; font-weight:500; font-size:15px; box-shadow:0 4px 15px rgba(76, 175, 80, 0.3); transition:all 0.3s ease; width:100%; max-width:250px;">
-      Support Us & Continue
-    </button>
-    
-    <div id="countdown" style="margin-top:20px; font-size:14px; color:#666; display:none;">
-      <div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
-        <div id="countdownNumber" style="width:36px; height:36px; background:#4CAF50; color:white; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; margin-right:10px; font-size:15px;">5</div>
-        <span style="margin-top:8px;">Seconds remaining</span>
-      </div>
-      <div style="width:100%; height:4px; background:#eee; border-radius:2px; margin-top:15px; overflow:hidden;">
-        <div id="progressBar" style="height:100%; background:#4CAF50; width:100%; transition:width 1s linear;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// Show popup with animation
-setTimeout(() => {
-  const popup = document.getElementById('adPopup');
-  popup.style.display = 'flex';
-  setTimeout(() => {
-    popup.style.opacity = '1';
-    popup.querySelector('div').style.transform = 'translateY(0)';
-  }, 10);
-}, 300);
-
-// When support button is clicked
-document.getElementById('supportBtn').addEventListener('click', function() {
-  // Open ad link in new tab
-  window.open('https://audaciousedifice.com/pd53dd7bc?key=98799ff57df38468670c51fdfa1b46ab', '_blank');
-  
-  // Hide button and show countdown
-  this.style.display = 'none';
-  const countdown = document.getElementById('countdown');
-  countdown.style.display = 'block';
-  
-  // Start 5 second countdown
-  let seconds = 5;
-  const numberElement = document.getElementById('countdownNumber');
-  const progressBar = document.getElementById('progressBar');
-  
-  const timer = setInterval(function() {
-    seconds--;
-    numberElement.textContent = seconds;
-    progressBar.style.width = (seconds * 20) + '%';
-    
-    if(seconds <= 0) {
-      clearInterval(timer);
-      // Close popup with animation
-      const popup = document.getElementById('adPopup');
-      popup.style.opacity = '0';
-      popup.querySelector('div').style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        popup.style.display = 'none';
-      }, 300);
-    }
-  }, 1000);
-});
-
-// Mobile viewport height fix
-function adjustPopupHeight() {
-  const popup = document.getElementById('adPopup');
-  popup.style.height = window.innerHeight + 'px';
-}
-
-// Initialize and add resize listener
-adjustPopupHeight();
-window.addEventListener('resize', adjustPopupHeight);
-</script>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 
